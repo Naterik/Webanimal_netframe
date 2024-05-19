@@ -1,0 +1,477 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<!-- Bắt đầu Header -->
+<div class="container-fluid bg-dark p-5">
+    <div class="row g-0 justify-content-between align-items-center">
+        <div class="col-lg-6">
+            <div class="header-content text-light">
+                <h1 class="display-4 text-light mb-5">
+                    Bảo vệ sự sống của loài vật là trách nhiệm của chúng ta.
+                </h1>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="btn btn-primary me-3 py-2 px-4">Đọc thêm</a>
+                    <!-- <button type="button"
+                            class="btn-play btn btn-outline-light"
+                            data-bs-toggle="modal"
+                            data-src="https://youtu.be/1WXu_wyu0LE?si=aq3pRhDM-JKnR5rd"
+                            data-bs-target="#videoModal">
+                        <span></span> Watch Video
+                    </button> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="header-carousel owl-carousel">
+                <div class="owl-carousel-item">
+                    <img class="img-fluid" src="~/Asset/User/img/carousel-1.jpg" alt="" />
+                </div>
+                <div class="owl-carousel-item">
+                    <img class="img-fluid" src="~/Asset/User/img/carousel-2.jpg" alt="" />
+                </div>
+                <div class="owl-carousel-item">
+                    <img class="img-fluid" src="~/Asset/User/img/carousel-3.jpg" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Kết thúc Header -->
+<!-- Bắt đầu Modal Video -->
+<div class="modal modal-video fade"
+     id="videoModal"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Video Youtube</h3>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Tỷ lệ khung 16:9 -->
+                <div class="ratio ratio-16x9">
+                    <iframe class="embed-responsive-item"
+                            src=""
+                            id="video"
+                            allowfullscreen
+                            allowscriptaccess="always"
+                            allow="autoplay"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Kết thúc Modal Video -->
+<!-- Bắt đầu Giới thiệu -->
+<div class="container py-5">
+    <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+            <h1 class="display-5 mb-4">
+                Tại sao bạn phải bảo vệ động vật
+            </h1>
+            <p class="mb-4">
+                Bảo vệ động vật là bảo vệ cho sự đa dạng sinh học và môi trường tự nhiên. Chúng duy trì cân bằng sinh thái và ảnh hưởng trực tiếp đến cuộc sống của con người trong tương lai. Đó là trách nhiệm của chúng ta.
+            </p>
+            <ul class="list-unstyled mb-4">
+                <li class="mb-2">
+                    <i class="far fa-check-circle text-primary me-2"></i>Bảo vệ động vật giữ cho môi trường tự nhiên nguyên vẹn.
+                </li>
+                <li class="mb-2">
+                    <i class="far fa-check-circle text-primary me-2"></i>Bảo vệ động vật là bảo vệ sự đa dạng sinh học của hành tinh.
+                </li>
+                <li class="mb-2">
+                    <i class="far fa-check-circle text-primary me-2"></i>Bảo vệ động vật giúp duy trì cân bằng sinh thái.
+                </li>
+                <li class="mb-2">
+                    <i class="far fa-check-circle text-primary me-2"></i>Bảo vệ động vật giúp duy trì cân bằng sinh thái.
+                </li>
+            </ul>
+            <a class="btn btn-primary py-3 px-5" href="#">Đọc thêm</a>
+        </div>
+        <div class="col-lg-6">
+            <img class="img-fluid rounded" src="~/Asset/User/img/about.jpg" alt="" />
+        </div>
+    </div>
+</div>
+<!-- Kết thúc Giới thiệu -->
+<!-- Bắt đầu Sự thật -->
+<div class="container-xxl bg-primary facts my-5 py-5 wow fadeInUp"
+     data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3 text-center wow fadeIn"
+                 data-wow-delay="0.1s">
+                <i class="fa fa-paw fa-3x text-primary mb-3"></i>
+                <h1 class="text-white mb-2" data-toggle="counter-up">12345</h1>
+                <p class="text-white mb-0">Tổng số động vật</p>
+            </div>
+            <div class="col-md-6 col-lg-3 text-center wow fadeIn"
+                 data-wow-delay="0.3s">
+                <i class="fa fa-users fa-3x text-primary mb-3"></i>
+                <h1 class="text-white mb-2" data-toggle="counter-up">12345</h1>
+                <p class="text-white mb-0">tình nguyện viên</p>
+            </div>
+            <div class="col-md-6 col-lg-3 text-center wow fadeIn"
+                 data-wow-delay="0.5s">
+                <i class="fa fa-certificate fa-3x text-primary mb-3"></i>
+                <h1 class="text-white mb-2" data-toggle="counter-up">12345</h1>
+                <p class="text-white mb-0">Số lượt ủng hộ</p>
+            </div>
+            <div class="col-md-6 col-lg-3 text-center wow fadeIn"
+                 data-wow-delay="0.7s">
+                <i class="fa fa-shield-alt fa-3x text-primary mb-3"></i>
+                <h1 class="text-white mb-2" data-toggle="counter-up">12345</h1>
+                <p class="text-white mb-0">Số lượng đã cứu</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Kết thúc Sự thật -->
+<!-- Bắt đầu Hoạt động -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-6">
+                <p><span class="text-primary me-2">#</span>Hoạt động </p>
+                <h1 class="display-5 mb-0">
+                    Hoạt động đặc biệt cho
+                    <span class="text-primary">Wild Nature</span>
+                </h1>
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-primary h-100 d-flex align-items-center py-4 px-4 px-sm-5">
+                    <i class="fa fa-3x fa-mobile-alt text-white"></i>
+                    <div class="ms-4">
+                        <p class="text-white mb-0">Gọi để biết thêm thông tin</p>
+                        <h2 class="text-white mb-0">+012 345 6789</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gy-5 gx-4">
+
+            <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp"
+                 data-wow-delay="0.3s">
+                <img class="img-fluid mb-3" src="~/Asset/User/img/icon/icon-3.png" alt="Icon" />
+                <h5 class="mb-3">Chụp ảnh động vật</h5>
+                <span>
+                    Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem
+                    sed diam stet diam sed stet.
+                </span>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp"
+                 data-wow-delay="0.5s">
+                <img class="img-fluid mb-3" src="~/Asset/User/img/icon/icon-4.png" alt="Icon" />
+                <h5 class="mb-3">Hướng dẫn hoạt động</h5>
+                <span>
+                    Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem
+                    sed diam stet diam sed stet.
+                </span>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp"
+                 data-wow-delay="0.7s">
+                <img class="img-fluid mb-3" src="~/Asset/User/img/icon/icon-5.png" alt="Icon" />
+                <h5 class="mb-3">Bảo vệ môi trường</h5>
+                <span>
+                    Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem
+                    sed diam stet diam sed stet.
+                </span>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp"
+                 data-wow-delay="0.7s">
+                <img class="img-fluid mb-3" src="~/Asset/User/img/icon/icon-9.png" alt="Icon" />
+                <h5 class="mb-3">Cứu trợ động vật </h5>
+                <span>
+                    Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem
+                    sed diam stet diam sed stet.
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Kết thúc Hoạt động -->
+<!-- Bắt đầu Động vật -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 mb-5 align-items-end wow fadeInUp"
+             data-wow-delay="0.1s">
+            <div class="col-lg-6">
+                <p><span class="text-primary me-2">#</span>Động vật </p>
+                <h1 class="display-5 mb-0">
+                    Hãy xem những loài <span class="text-primary">Wild Nature</span>đặc biệt
+
+                </h1>
+            </div>
+            <div class="col-lg-6 text-lg-end">
+                <a class="btn btn-primary py-3 px-5" href="">Khám phá Thêm Động Vật</a>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="row g-4">
+                    <div class="col-12">
+                        <a class="animal-item"
+                           href="~/Asset/User/img/animal-md-1.jpg"
+                           data-lightbox="animal">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="~/Asset/User/img/animal-md-1.jpg" alt="" />
+                                <div class="animal-text p-4">
+                                    <p class="text-white small text-uppercase mb-0">Động vật</p>
+                                    <h5 class="text-white mb-0">Voi</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12">
+                        <a class="animal-item"
+                           href="~/Asset/User/img/animal-lg-1.jpg"
+                           data-lightbox="animal">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="~/Asset/User/img/animal-lg-1.jpg" alt="" />
+                                <div class="animal-text p-4">
+                                    <p class="text-white small text-uppercase mb-0">Động vật</p>
+                                    <h5 class="text-white mb-0">Voi</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="row g-4">
+                    <div class="col-12">
+                        <a class="animal-item"
+                           href="~/Asset/User/img/animal-lg-2.jpg"
+                           data-lightbox="animal">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="~/Asset/User/img/animal-lg-2.jpg" alt="" />
+                                <div class="animal-text p-4">
+                                    <p class="text-white small text-uppercase mb-0">Động vật</p>
+                                    <h5 class="text-white mb-0">Voi</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12">
+                        <a class="animal-item"
+                           href="~/Asset/User/img/animal-md-2.jpg"
+                           data-lightbox="animal">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="~/Asset/User/img/animal-md-2.jpg" alt="" />
+                                <div class="animal-text p-4">
+                                    <p class="text-white small text-uppercase mb-0">Động vật</p>
+                                    <h5 class="text-white mb-0">Voi</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="row g-4">
+                    <div class="col-12">
+                        <a class="animal-item"
+                           href="~/Asset/User/img/animal-md-3.jpg"
+                           data-lightbox="animal">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="~/Asset/User/img/animal-md-3.jpg" alt="" />
+                                <div class="animal-text p-4">
+                                    <p class="text-white small text-uppercase mb-0">Động vật</p>
+                                    <h5 class="text-white mb-0">Voi</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12">
+                        <a class="animal-item"
+                           href="~/Asset/User/img/animal-lg-3.jpg"
+                           data-lightbox="animal">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="~/Asset/User/img/animal-lg-3.jpg" alt="" />
+                                <div class="animal-text p-4">
+                                    <p class="text-white small text-uppercase mb-0">Động vật</p>
+                                    <h5 class="text-white mb-0">Voi</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Kết thúc Động vật -->
+<!-- Bắt đầu Thời gian thăm -->
+<div class="container-xxl bg-primary visiting-hours my-5 py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5 justify-content-center">
+            <div class="col-md-6 text-light wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="display-6 text-white mb-5">Thông Tin Liên Hệ</h1>
+                <div class="text-center">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Văn phòng</td>
+                                <td>123 Phố, New York, USA</td>
+                            </tr>
+                            <tr>
+                                <td>Vườn thú</td>
+                                <td>123 Phố, New York, USA</td>
+                            </tr>
+                            <tr>
+                                <td>Vé</td>
+                                <td>
+                                    <p class="mb-2">+012 345 6789</p>
+                                    <p class="mb-0">ticket@example.com</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Hỗ trợ</td>
+                                <td>
+                                    <p class="mb-2">+012 345 6789</p>
+                                    <p class="mb-0">support@example.com</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Kết thúc Thời gian thăm -->
+<!-- Bắt đầu Hội viên -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 mb-5 align-items-end wow fadeInUp"
+             data-wow-delay="0.1s">
+            <div class="col-lg-6">
+                <h1 class="display-5 mb-0">
+                    Bạn Có Thể Là Một Hội Viên Tự Hào Của
+                    <span class="text-primary">Wild Nature</span>
+                </h1>
+            </div>
+            <div class="col-lg-6 text-lg-end">
+                <a class="btn btn-primary py-3 px-5" href="">Bảo vệ Rừng</a>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="membership-item position-relative">
+                    <img class="img-fluid" src="~/Asset/User/img/animal-lg-1.jpg" alt="" />
+                    <h1 class="display-1">01</h1>
+                    <h4 class="text-white mb-3">Phổ biến</h4>
+                    <h3 class="text-primary mb-4">$99.00</h3>
+                    <p><i class="fa fa-check text-primary me-3"></i>Giảm giá 10%</p>
+                    <p>
+                        <i class="fa fa-check text-primary me-3"></i>2 người lớn và 2 trẻ em
+                    </p>
+                    <p>
+                        <i class="fa fa-check text-primary me-3"></i>Triển lãm động vật miễn phí
+                    </p>
+                    <a class="btn btn-outline-light px-4 mt-3" href="">Bắt đầu</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="membership-item position-relative">
+                    <img class="img-fluid" src="~/Asset/User/img/animal-lg-2.jpg" alt="" />
+                    <h1 class="display-1">02</h1>
+                    <h4 class="text-white mb-3">Phục hồi</h4>
+                    <h3 class="text-primary mb-4">$149.00</h3>
+                    <p><i class="fa fa-check text-primary me-3"></i>Giảm giá 15%</p>
+                    <p>
+                        <i class="fa fa-check text-primary me-3"></i>4 người lớn và 4 trẻ em
+                    </p>
+                    <p>
+                        <i class="fa fa-check text-primary me-3"></i>Triển lãm động vật miễn phí
+                    </p>
+                    <a class="btn btn-outline-light px-4 mt-3" href="">Bắt đầu</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="membership-item position-relative">
+                    <img class="img-fluid" src="~/Asset/User/img/animal-lg-3.jpg" alt="" />
+                    <h1 class="display-1">03</h1>
+                    <h4 class="text-white mb-3">Môi trường không khí</h4>
+                    <h3 class="text-primary mb-4">$199.00</h3>
+                    <p><i class="fa fa-check text-primary me-3"></i>Giảm giá 20%</p>
+                    <p>
+                        <i class="fa fa-check text-primary me-3"></i>6 người lớn và 6 trẻ em
+                    </p>
+                    <p>
+                        <i class="fa fa-check text-primary me-3"></i>Triển lãm động vật miễn phí
+                    </p>
+                    <a class="btn btn-outline-light px-4 mt-3" href="">Bắt đầu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Kết thúc Hội viên -->
+<!-- Bắt đầu Phản hồi -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <h1 class="display-5 text-center mb-5 wow fadeInUp"
+            data-wow-delay="0.1s">
+            Ý kiến của tình nguyện viên!
+        </h1>
+        <div class="owl-carousel testimonial-carousel wow fadeInUp"
+             data-wow-delay="0.1s">
+            <div class="testimonial-item text-center">
+                <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4"
+                     src="~/Asset/User/img/testimonial-1.jpg"
+                     style="width: 100px; height: 100px" />
+                <div class="testimonial-text rounded text-center p-4">
+                    <p>
+                        Clita clita tempor justo dolor ipsum amet kasd amet duo justo
+                        duo duo labore sed sed. Magna ut diam sit et amet stet eos sed
+                        clita erat magna elitr erat sit sit erat at rebum justo sea
+                        clita.
+                    </p>
+                    <h5 class="mb-1">Tên tình nguyện viên</h5>
+                    <span class="fst-italic">Nghề nghiệp</span>
+                </div>
+            </div>
+            <div class="testimonial-item text-center">
+                <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4"
+                     src="~/Asset/User/img/testimonial-2.jpg"
+                     style="width: 100px; height: 100px" />
+                <div class="testimonial-text rounded text-center p-4">
+                    <p>
+                        Clita clita tempor justo dolor ipsum amet kasd amet duo justo
+                        duo duo labore sed sed. Magna ut diam sit et amet stet eos sed
+                        clita erat magna elitr erat sit sit erat at rebum justo sea
+                        clita.
+                    </p>
+                    <h5 class="mb-1">Tên tình nguyện viên</h5>
+                    <span class="fst-italic">Nghề nghiệp</span>
+                </div>
+            </div>
+            <div class="testimonial-item text-center">
+                <img class="img-fluid rounded-circle border border-2 p-2 mx-auto mb-4"
+                     src="~/Asset/User/img/testimonial-3.jpg"
+                     style="width: 100px; height: 100px" />
+                <div class="testimonial-text rounded text-center p-4">
+                    <p>
+                        Clita clita tempor justo dolor ipsum amet kasd amet duo justo
+                        duo duo labore sed sed. Magna ut diam sit et amet stet eos sed
+                        clita erat magna elitr erat sit sit erat at rebum justo sea
+                        clita.
+                    </p>
+                    <h5 class="mb-1">Tên tình nguyện viên</h5>
+                    <span class="fst-italic">Nghề nghiệp</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Kết thúc Phản hồi -->

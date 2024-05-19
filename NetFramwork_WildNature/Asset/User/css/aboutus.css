@@ -1,0 +1,131 @@
+﻿ Thiết kế form 
+form {
+    margin: 20px auto;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    animation: fadein 1s ease-in-out;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+}
+
+    input[type="text"]:focus,
+    textarea:focus {
+        border-color: #4CAF50;
+    }
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+.container {
+    padding: 16px;
+}
+
+span {
+    color: red;
+    font-weight: bold;
+}
+
+ CSS mới cho phần section 
+section {
+    padding: 80px 0;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.5s ease;
+}
+
+    section h2 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 40px;
+    }
+
+    section p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    section ul {
+        padding-left: 20px;
+        margin-bottom: 30px;
+    }
+
+        section ul li {
+            font-size: 18px;
+            list-style-type: none;
+            margin-bottom: 15px;
+        }
+
+            section ul li i {
+                margin-right: 10px;
+                color: #007bff;
+            }
+
+    section img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    section.animated {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+/* Đảm bảo các hình ảnh có sự phân khúc */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Các phần tử giữa cột dọc */
+#about .row,
+#about-wild-nature .row,
+#projects .row,
+#achievements .row {
+    display: flex;
+    align-items: center;
+}
+
+/* Phần nội dung về Wild Nature */
+#about-wild-nature .col-lg-6 {
+    order: -1;
+}
+
+.col-lg-6 h1{
+    padding-bottom:10px;
+}

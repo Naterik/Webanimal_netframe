@@ -1,0 +1,53 @@
+﻿@model NetFramwork_WildNature.Db.ConservationStatu
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Xóa tình trạng
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/Admin/Home"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="/Admin/ConservationStatus">Quản lý tình trạng</a></li>
+        <li class="active">Xóa tình trạng</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="box box-primary">
+        <div class="box-header with-border">
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <div class="tab-content">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Decription)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Decription)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-default" /> |
+                            @Html.ActionLink("Quay lại", "Index")
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div><!-- /.tab-content -->
+    </div>
+
+</section><!-- /.content -->

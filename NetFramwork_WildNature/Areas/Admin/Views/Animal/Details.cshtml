@@ -1,0 +1,75 @@
+﻿@model NetFramwork_WildNature.Db.Animal
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Animal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Area.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConservationStatu.Decription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConservationStatu.Decription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
