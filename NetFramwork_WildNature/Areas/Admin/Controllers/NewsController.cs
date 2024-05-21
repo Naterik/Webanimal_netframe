@@ -4,16 +4,16 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using NetFramwork_WildNature.Db;
+
 
 namespace NetFramwork_WildNature.Areas.Admin.Controllers
 {
     public class NewsController : Controller
     {
-        private WildNature db = new WildNature();
-
         // GET: Admin/News
         public ActionResult Index()
         {
@@ -48,6 +48,7 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "ID,Titile,Images,ẠnimalID,Decription,Date")] News news)
         {
             if (ModelState.IsValid)
@@ -63,6 +64,7 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
 
         // GET: Admin/News/Edit/5
         public ActionResult Edit(int? id)
+
         {
             if (id == null)
             {
@@ -81,18 +83,48 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "ID,Titile,Images,ẠnimalID,Decription,Date")] News news)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(news).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    // Loại bỏ các thẻ HTML không mong muốn từ Decription
+                    news.Decription = StripHtml(news.Decription);
+
+                    News currentNews = db.News.Find(news.ID);
+                    var image = Request.Files["Images"];
+                    if (image != null && image.ContentLength > 0)
+                    {
+                        string imageName = image.FileName;
+                        string folder = Server.MapPath("~/Asset/Admin/Image/" + imageName);
+                        image.SaveAs(folder);
+                        news.Images = "/Asset/Admin/Image/" + imageName;
+                    }
+                    currentNews.Titile = news.Titile;
+                    currentNews.Images = news.Images;
+                    currentNews.ẠnimalID = news.ẠnimalID;
+                    currentNews.Decription = news.Decription;
+                    currentNews.Date = news.Date;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    // Handle any errors that might have occurred
+                }
             }
             ViewBag.ẠnimalID = new SelectList(db.Animals, "ID", "Name", news.ẠnimalID);
             return View(news);
         }
+
+        // Phương pháp để loại bỏ HTML không mong muốn
+        private string StripHtml(string input)
+        {
+            return Regex.Replace(input, "<.*?>", String.Empty);
+        }
+
 
         // GET: Admin/News/Delete/5
         public ActionResult Delete(int? id)

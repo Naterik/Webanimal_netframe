@@ -142,6 +142,7 @@
     <Compile Include="Areas\Admin\Controllers\SpeciesController.cs" />
     <Compile Include="Areas\Admin\Controllers\VolunteerController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
+    <Compile Include="Areas\Admin\Models\WildNatureEntities.cs" />
     <Compile Include="Common\Contants.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\UserLogin.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Dao\AnimalDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="Db\Account.cs" />
     <Compile Include="Db\Animal.cs" />
@@ -170,7 +172,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.1.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +270,7 @@
     <Content Include="Asset\Admin\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Asset\Admin\bootstrap\js\bootstrap.min.js" />
     <Content Include="Asset\Admin\bootstrap\js\fileinput.min.js" />
+    <Content Include="Asset\Admin\bootstrap\js\News.js" />
     <Content Include="Asset\Admin\controller\acccount.css" />
     <Content Include="Asset\Admin\controller\accountController.js" />
     <Content Include="Asset\Admin\controller\AnimalDetail.css" />
@@ -380,6 +382,9 @@
     <Content Include="Asset\Admin\plugins\select2\select2.min.css" />
     <Content Include="Asset\Admin\plugins\slimScroll\jquery.slimscroll.min.js" />
     <Content Include="Asset\User\css\aboutus.css" />
+    <Content Include="Asset\User\css\AnimalDetail\AnimalDetail.css" />
+    <Content Include="Asset\User\css\AnimalDetail\AnimalListcss.css" />
+    <Content Include="Asset\User\css\AnimalDetail\bootstrap.css" />
     <Content Include="Asset\User\css\bootstrap.min.css" />
     <Content Include="Asset\User\css\homecss.css" />
     <Content Include="Asset\User\css\News.css" />
@@ -410,7 +415,6 @@
     <Content Include="Asset\User\img\testimonial-2.jpg" />
     <Content Include="Asset\User\img\testimonial-3.jpg" />
     <Content Include="Asset\User\js\main.js" />
-    <Content Include="Asset\User\js\User.js" />
     <Content Include="Asset\User\lib\animate\animate.css" />
     <Content Include="Asset\User\lib\animate\animate.min.css" />
     <Content Include="Asset\User\lib\counterup\counterup.min.js" />
@@ -668,9 +672,6 @@
     <Content Include="Areas\Admin\Views\Animal\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\401.cshtml" />
-    <Content Include="obj\Debug\NetFramwork_WildNature.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\NetFramwork_WildNature.dll" />
-    <Content Include="obj\Debug\NetFramwork_WildNature.pdb" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -776,11 +777,6 @@
     <Content Include="Asset\Admin\controller\Loginadmin\scss\bootstrap\_utilities.scss" />
     <Content Include="Asset\Admin\controller\Loginadmin\scss\bootstrap\_variables.scss" />
     <Content Include="Asset\Admin\controller\Loginadmin\scss\style.scss" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\NetFramw.5C019072.Up2Date" />
-    <Content Include="obj\Debug\NetFramwork_WildNature.csproj.AssemblyReference.cache" />
-    <Content Include="obj\Debug\NetFramwork_WildNature.csproj.CoreCompileInputs.cache" />
     <Content Include="bin\NetFramwork_WildNature.dll.config" />
     <Content Include="bin\roslyn\csc.exe.config" />
     <Content Include="bin\roslyn\csc.rsp" />
@@ -823,12 +819,12 @@
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\AnimalList\Index.cshtml" />
+    <Content Include="Views\AnimalList\AnimalDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Models\" />
-    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -856,6 +852,9 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

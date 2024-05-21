@@ -1,8 +1,7 @@
-﻿namespace NetFramwork_WildNature.Db
+namespace NetFramwork_WildNature.Db
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -11,15 +10,14 @@
     public partial class Donate
     {
         public int ID { get; set; }
-        [DisplayName("Số tiền")]
+
         public double? Amount { get; set; }
 
         [Column(TypeName = "date")]
-        [DisplayName("Ngày chuyển")]
         public DateTime? Date { get; set; }
-        [DisplayName("Tên tình nguyện ")]
+
         public int? VolunteerID { get; set; }
-        [DisplayName("Trạng thái")]
+
         public bool? State { get; set; }
 
         public virtual Volunteer Volunteer { get; set; }

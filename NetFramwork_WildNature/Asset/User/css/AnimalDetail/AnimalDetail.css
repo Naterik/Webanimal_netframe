@@ -1,0 +1,106 @@
+﻿.adopt-card {
+    display: flex;
+    align-items: stretch; /* Ensure items stretch to the same height */
+    gap: 40px; /* Adjust gap between image and caption */
+}
+
+.image-container {
+    flex: 1; /* Image container takes up equal space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 0; /* Remove additional padding */
+}
+
+.img-animal.img-with-padding.img_detail {
+    width: 570px !important;
+    height: 620px;
+    object-fit: cover;
+}
+
+/* Optional: Ensure the adoption caption takes up the remaining space */
+.caption-adoption {
+    flex: 1;
+}
+
+.caption-adoption {
+    flex: 1;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Arial', sans-serif; /* Adjust font if needed */
+}
+
+    /* Styling for the animal name */
+    .caption-adoption .animal-name {
+        font-size: 2rem; /* Increase font size */
+        margin-bottom: 20px;
+        color: #28a745; /* Green color for name */
+        text-align: center; /* Center align */
+        font-weight: bold; /* Bold text */
+        text-transform: uppercase; /* Uppercase text */
+    }
+
+    /* Styling for the adopt-card-info list */
+    .caption-adoption .adopt-card-info,
+    .caption-adoption .list-unstyled {
+        padding: 0;
+        margin: 0;
+    }
+
+        .caption-adoption .adopt-card-info li,
+        .caption-adoption .list-unstyled li {
+            margin-bottom: 15px; /* Increase space between list items */
+            font-size: 1.1rem; /* Slightly larger font size */
+            color: #555;
+            display: flex;
+            align-items: center; /* Align icons and text */
+            background: #e9ecef; /* Light background for list items */
+            padding: 10px; /* Padding inside list items */
+            border-radius: 5px; /* Rounded corners for list items */
+        }
+
+    /* Styling for icons */
+    .caption-adoption i {
+        color: #28a745; /* Green color for icons */
+        margin-right: 10px;
+        font-size: 1.3rem; /* Slightly larger icons */
+    }
+
+    .caption-adoption strong {
+        color: #333;
+        font-weight: 600; /* Semi-bold for strong tags */
+    }
+
+/* Specific icon styling */
+.flaticon-weight:before {
+    content: "\f496"; /* Appropriate unicode for weight icon */
+}
+
+.flaticon-height:before {
+    content: "\f496"; /* Appropriate unicode for height icon */
+}
+
+.flaticon-origin:before {
+    content: "\f2bb"; /* Appropriate unicode for origin icon */
+}
+
+.flaticon-specie:before {
+    content: "\f6d3"; /* Appropriate unicode for specie icon */
+}
+
+.flaticon-color:before {
+    content: "\f53f"; /* Appropriate unicode for color icon */
+}
+
+.flaticon-area:before {
+    content: "\f0ac"; /* Appropriate unicode for area icon */
+}
+
+.flaticon-conservation:before {
+    content: "\f1b0"; /* Appropriate unicode for conservation icon */
+}

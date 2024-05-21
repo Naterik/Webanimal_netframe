@@ -1,8 +1,7 @@
-﻿namespace NetFramwork_WildNature.Db
+namespace NetFramwork_WildNature.Db
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -19,21 +18,18 @@
         public int ID { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Cân nặng")]
         public string Weight { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Chiều cao")]
         public string Height { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Nguồn gốc")]
         public string Origin { get; set; }
-        [DisplayName("Màu lông")]
+
         public int? ColorID { get; set; }
-        [DisplayName("Tên động vật")]
+
         public int? AnimalID { get; set; }
-        [DisplayName("Giống loài")]
+
         public int? SpecieID { get; set; }
 
         public virtual Animal Animal { get; set; }

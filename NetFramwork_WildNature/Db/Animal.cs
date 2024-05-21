@@ -1,8 +1,7 @@
-﻿namespace NetFramwork_WildNature.Db
+namespace NetFramwork_WildNature.Db
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -22,23 +21,20 @@
 
         [Required]
         [StringLength(50)]
-        [DisplayName("Mã động vật")]
         public string Code { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Tên động vật")]
         public string Name { get; set; }
-        [DisplayName("Khu vực")]
+
         public int? AreaID { get; set; }
-        [DisplayName("Tình trạng bảo tồn")]
+
         public int? ConservationStatusID { get; set; }
-        [DisplayName("Loại động vật")]
+
         public int? CategoryID { get; set; }
-        [DisplayName("Trạng thái")]
+
         public bool? State { get; set; }
 
-        [StringLength(50)]
-        [DisplayName("Mô tả động vật")]
+        [StringLength(3000)]
         public string Description { get; set; }
 
         public virtual Category Category { get; set; }
