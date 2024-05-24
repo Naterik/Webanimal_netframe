@@ -88,8 +88,11 @@
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
-
-<script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
     <script src="~/Asset/Admin/bootstrap/js/News.js"></script>
 
+@{
+    var summernote = new NetFramwork_WildNature.Dao.Summernote("#Decription");
+    Html.RenderPartial("_Summernote", summernote);
 }
+    }
+

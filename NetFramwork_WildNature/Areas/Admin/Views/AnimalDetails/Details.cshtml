@@ -1,0 +1,67 @@
+﻿@model NetFramwork_WildNature.Db.AnimalDetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AnimalDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Specie.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specie.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Height)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Height)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Origin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Origin)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

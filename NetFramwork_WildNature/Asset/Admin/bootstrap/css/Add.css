@@ -1,0 +1,15 @@
+﻿
+.btn-custom {
+    width: 75px;
+    height: 37px;
+    font-size: 15px;
+    /*line-height: 30px;*/ /* Aligns the text vertically in the center */
+    text-align: center; /* Aligns the text horizontally in the center */
+    color: white; /* Sets the initial text color */
+    transition: color 0.3s ease; /* Adds a transition effect when the color changes */
+}
+
+    .btn-custom:hover {
+        color: black; /* Changes the text color on hover */
+    }
+

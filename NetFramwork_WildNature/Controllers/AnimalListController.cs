@@ -16,8 +16,7 @@ namespace NetFramwork_WildNature.Controllers
         public ActionResult Index(string searchString)
         {
             var animals = db.Animals.Include(a => a.AnimalDetails.Select(ad => ad.Images))
-                                    .Include(a => a.Area)
-                                    .Include(a => a.ConservationStatu);
+                                    .Include(a => a.Area);
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -37,7 +36,6 @@ namespace NetFramwork_WildNature.Controllers
                                  .Include(i => i.AnimalDetail.Specie)
                                  .Include(i => i.AnimalDetail.Color)
                                  .Include(i => i.AnimalDetail.Animal.Area)
-                                 .Include(i => i.AnimalDetail.Animal.ConservationStatu)
                                  .Include(i => i.AnimalDetail.Animal.Category)
                                  .FirstOrDefault(i => i.ID == id);
 

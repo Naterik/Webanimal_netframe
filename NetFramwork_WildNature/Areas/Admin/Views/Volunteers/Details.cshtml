@@ -1,0 +1,63 @@
+﻿@model NetFramwork_WildNature.Db.Volunteer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Chi tiết tình nguyện viên
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/Admin/Home"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="/Admin/Volunteers">Quản lý tình nguyện viên</a></li>
+        <li class="active">Chi tiết tình nguyện viên</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="box box-primary">
+        <div class="box-header with-border">
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <div class="tab-content">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Account.Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Account.Name)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Sửa", "Edit", new { id = Model.ID }) |
+                    @Html.ActionLink("Quay lại", "Index")
+                </p>
+            </div>
+        </div>
+
+    </div><!-- /.tab-content -->
+
+</section><!-- /.content -->

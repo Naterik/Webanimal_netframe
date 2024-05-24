@@ -15,6 +15,7 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
     public class NewsController : Controller
     {
         // GET: Admin/News
+        private WildNature db = new WildNature();
         public ActionResult Index()
         {
             var news = db.News.Include(n => n.Animal);
@@ -90,8 +91,6 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
             {
                 try
                 {
-                    // Loại bỏ các thẻ HTML không mong muốn từ Decription
-                    news.Decription = StripHtml(news.Decription);
 
                     News currentNews = db.News.Find(news.ID);
                     var image = Request.Files["Images"];
@@ -118,13 +117,6 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
             ViewBag.ẠnimalID = new SelectList(db.Animals, "ID", "Name", news.ẠnimalID);
             return View(news);
         }
-
-        // Phương pháp để loại bỏ HTML không mong muốn
-        private string StripHtml(string input)
-        {
-            return Regex.Replace(input, "<.*?>", String.Empty);
-        }
-
 
         // GET: Admin/News/Delete/5
         public ActionResult Delete(int? id)

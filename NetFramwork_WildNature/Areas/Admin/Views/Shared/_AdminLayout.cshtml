@@ -1,27 +1,24 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Advanced form elements</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/Asset/Admin/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="~/Asset/Admin/plugins/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="~/Asset/Admin/plugins/ionicons/css/ionicons.min.css">
     <!-- Theme style -->
+    <link href="~/Asset/Admin/bootstrap/css/Add.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Asset/Admin/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="~/Asset/Admin/dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!--css custom page-->
+    <!-- Custom Page CSS -->
     <link rel="stylesheet" href="~/Asset/Admin/bootstrap/css/fileinput.min.css">
     <!-- Select2 -->
     <link rel="stylesheet" href="~/Asset/Admin/plugins/select2/select2.min.css">
-    <!-- iCheck for checkboxes and radio inputs -->
-    @*<link rel="stylesheet" href="~/Asset/Admin/bootstrapplugins/iCheck/all.css">*@
+    <!-- Summernote CSS -->
+    <link href="~/Content/Summerfile/summernote-bs4.min.css" rel="stylesheet" />
 
     @RenderSection("Style", required: false)
 </head>
@@ -169,11 +166,11 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/Admin/Animal/Index"><i class="fa fa-circle-o"></i> Động vật</a></li>
+                            <li><a href="/Admin/Animals/Index"><i class="fa fa-circle-o"></i> Động vật</a></li>
                             <li><a href="/Admin/Area/Index"><i class="fa fa-circle-o"></i> Khu vực</a></li>
                             <li><a href="/Admin/Species/Index"><i class="fa fa-circle-o"></i> Loài</a></li>
                             <li><a href="/Admin/Color/Index"><i class="fa fa-circle-o"></i> Màu da</a></li>
-                            <li><a href="/Admin/ConservationStatus/Index"><i class="fa fa-circle-o"></i> Tình trạng bảo tồn</a></li>
+                            <li><a href="/Admin/Conservations/Index"><i class="fa fa-circle-o"></i> Tình trạng bảo tồn</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -211,26 +208,27 @@
         </div><!-- /.content-wrapper -->
 
     </div><!-- ./wrapper -->
-
+    <!-- jQuery -->
+    <!-- jQuery -->
     <script src="~/Asset/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="~/Asset/Admin/bootstrap/js/bootstrap.min.js"></script>
     <!-- SlimScroll 1.3.0 -->
     <script src="~/Asset/Admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-
     <!-- FastClick -->
     <script src="~/Asset/Admin/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/Asset/Admin/dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/Asset/Admin/dist/js/demo.js"></script>
-    <script src="/Asset/Admin/ckfinder/ckfinder.js"></script>
-    <!--script custom page-->
-    <!-- iCheck 1.0.1 -->
+
+    <!-- Summernote JS -->
+    <script src="~/Content/Summerfile/summernote-bs4.min.js"></script>
+    <!-- Other Custom Scripts -->
     <script src="~/Asset/Admin/plugins/iCheck/icheck.min.js"></script>
-    <!-- Select2 -->
     <script src="~/Asset/Admin/plugins/select2/select2.full.min.js"></script>
     <script src="~/Asset/Admin/bootstrap/js/fileinput.min.js"></script>
+    <script src="~/Asset/Admin/ckeditor/ckeditor.js"></script>
 
     <script>
         $(function () {
@@ -253,10 +251,22 @@
                 radioClass: 'iradio_flat-green'
             });
 
+            // Initialize Summernote
+            $('#Decription').summernote({
+                height: 150,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
         });
     </script>
 
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-

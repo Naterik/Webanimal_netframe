@@ -15,7 +15,7 @@
     <div class="col-xs-12">
         <div class="box ">
             <div class="box-header">
-                <a href="/Admin/Color/Create" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> New</a>
+                <a href="/Admin/Color/Create" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> Thêm mới</a>
             </div><!-- /.box-header -->
             <div class="box-body">
                 <table id="example" class="table table-bordered table-striped">
@@ -53,9 +53,9 @@
                                     @Html.DisplayFor(modelItem => item.ColorSpecific)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Sửa", "Edit", new { id = item.ID }) |
-                                    @Html.ActionLink("Chi tiết", "Details", new { id = item.ID }) |
-                                    @Html.ActionLink("Xóa", "Delete", new { id = item.ID })
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.ID }, new { @class = "btn btn-primary btn-custom" })
+                                    @Html.ActionLink("Chi tiết", "Details", new { id = item.ID }, new { @class = "btn btn-warning btn-custom" })
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.ID }, new { @class = "btn btn-danger btn-custom" })
                                 </td>
                             </tr>
                         }

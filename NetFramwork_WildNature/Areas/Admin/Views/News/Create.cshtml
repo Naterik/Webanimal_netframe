@@ -5,12 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-@section Scripts{
-    @Scripts.Render("~/bundles/jqueryval")
-<script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
-    <script src="~/Asset/Admin/bootstrap/js/News.js"></script>
-}
-
 <section class="content-header">
     <h1>
         Thêm mới tin tức
@@ -24,69 +18,71 @@
 
 <!-- Main content -->
 <section class="content">
-    <!-- SELECT2 EXAMPLE -->
     <div class="box box-primary">
-        <form method="post" action="/Admin/News/Create" enctype="multipart/form-data">
-            <div class="box-header with-border">
-            </div><!-- /.box-header -->
-            <div class="box-body">
-                @using (Html.BeginForm("Create", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    @Html.AntiForgeryToken()
+        @using (Html.BeginForm("Create", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
 
-                <div class="form-horizontal">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Titile, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Titile, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Titile, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <input type="file" name="Images" id="Images" class="form-control" />
-                            @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ẠnimalID, "ẠnimalID", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownList("ẠnimalID", null, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.ẠnimalID, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Decription, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.TextAreaFor(model => model.Decription, new { htmlAttributes = new { @class = "form-control", id = "ckDetail" } })
-                            @Html.ValidationMessageFor(model => model.Decription, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(model => model.Date, "{0:yyyy-MM-dd}", new { @class = "form-control", @Value = DateTime.Now.ToString("yyyy-MM-dd"), @type = "date" })
-                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Thêm mới" class="btn btn-default" />
-                        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Titile, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Titile, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Titile, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                }
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="file" name="Images" id="Images" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ẠnimalID, "ẠnimalID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ẠnimalID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ẠnimalID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Decription, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Decription, new { htmlAttributes = new { @class = "form-control", @id = "Decription" } })
+                        @Html.ValidationMessageFor(model => model.Decription, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Date, "{0:yyyy-MM-dd}", new { @class = "form-control", @Value = DateTime.Now.ToString("yyyy-MM-dd"), @type = "date" })
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Thêm mới" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
-        </form>
+        }
     </div>
-</section><!-- /.content -->
+</section>
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+@*    @{
+        var summernote = new NetFramwork_WildNature.Dao.Summernote("#Decription");
+        Html.RenderPartial("_Summernote", summernote);
+    }*@
+

@@ -1,0 +1,70 @@
+﻿@model NetFramwork_WildNature.Db.Donate
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Chi tiết sự ủng hộ
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/Admin/Home"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="/Admin/Donates">Quản lý sự ủng hộ</a></li>
+        <li class="active">Chi tiết sự ủng hộ</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="box box-primary">
+        <div class="box-header with-border">
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <div class="tab-content">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Account.Email)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Account.Email)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Amount)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Amount)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Date)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Date)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.State)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.State)
+                        </dd>
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                    @Html.ActionLink("Quay lại", "Index")
+                </p>
+            </div>
+        </div>
+
+    </div><!-- /.tab-content -->
+
+</section><!-- /.content -->

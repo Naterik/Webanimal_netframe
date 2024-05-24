@@ -1,0 +1,102 @@
+﻿@model NetFramwork_WildNature.Areas.Admin.Models.AnimalListModel.AnimalViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section Style{
+    <link href="~/Asset/Admin/bootstrap/css/Add.css" rel="stylesheet" />
+    <link href="~/Asset/Admin/controller/Animal/Animaldetail.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+}
+
+<h2>Thông tin động vật</h2>
+
+<div class="animal-details">
+    <h4><i class="fas fa-paw icon"></i>@Html.DisplayFor(model => model.Animal.Name)</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal-1">
+                <dt><i class="fas fa-map-marker-alt icon"></i>@Html.DisplayNameFor(model => model.Animal.Area.Name) </dt>
+                <dd>@Html.DisplayFor(model => model.Animal.Area.Name)</dd>
+
+                <dt><i class="fas fa-th-large icon"></i>@Html.DisplayNameFor(model => model.Animal.Category.Name) </dt>
+                <dd>@Html.DisplayFor(model => model.Animal.Category.Name)</dd>
+
+                <dt><i class="fas fa-shield-alt icon"></i>@Html.DisplayNameFor(model => model.Animal.Conservation.Name)</dt>
+                <dd>@Html.DisplayFor(model => model.Animal.Conservation.Name)</dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <dl class="dl-horizontal-1">
+                <dt><i class="fas fa-barcode icon"></i>@Html.DisplayNameFor(model => model.Animal.Code)</dt>
+                <dd>@Html.DisplayFor(model => model.Animal.Code)</dd>
+
+                <dt><i class="fas fa-info-circle icon"></i>@Html.DisplayNameFor(model => model.Animal.State) </dt>
+                <dd>@Html.DisplayFor(model => model.Animal.State)</dd>
+
+                <dt><i class="fas fa-align-left icon"></i>@Html.DisplayNameFor(model => model.Animal.Decription) </dt>
+                <dd>@Html.DisplayFor(model => model.Animal.Decription)</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div class="animal-details">
+    <h3 style="font-weight:bold">Ảnh</h3>
+    <hr />
+    <div class="image-select">
+        @foreach (var image in Model.AnimalDetail.Images)
+        {
+            <img class="animal-image" src="@Url.Content(image.Link)" alt="Animal Image" />
+
+        }
+    </div>
+</div>
+
+<div class="animal-detail-list">
+    <h4><i class="fas fa-list icon"></i>Chi tiết thông tin</h4>
+    <hr />
+    @foreach (var detail in Model.Animal.AnimalDetails)
+    {
+        <div class="row">
+            <div class="col-md-2">
+                <dl class="dl-horizontal">
+                    <dt><i class="fas fa-palette icon"></i>@Html.DisplayNameFor(model => detail.Color.Name): </dt>
+                    <dd>@Html.DisplayFor(model => detail.Color.Name)</dd>
+                </dl>
+            </div>
+            <div class="col-md-2">
+                <dl class="dl-horizontal">
+                    <dt><i class="fas fa-dna icon"></i>@Html.DisplayNameFor(model => detail.Specie.Name): </dt>
+                    <dd>@Html.DisplayFor(model => detail.Specie.Name)</dd>
+                </dl>
+            </div>
+            <div class="col-md-2">
+                <dl class="dl-horizontal">
+                    <dt><i class="fas fa-weight icon"></i>@Html.DisplayNameFor(model => detail.Weight): </dt>
+                    <dd>@Html.DisplayFor(model => detail.Weight)</dd>
+                </dl>
+            </div>
+            <div class="col-md-2">
+                <dl class="dl-horizontal">
+                    <dt><i class="fas fa-ruler-vertical icon"></i>@Html.DisplayNameFor(model => detail.Height): </dt>
+                    <dd>@Html.DisplayFor(model => detail.Height)</dd>
+                </dl>
+            </div>
+            <div class="col-md-3">
+                <dl class="dl-horizontal">
+                    <dt><i class="fas fa-globe icon"></i>@Html.DisplayNameFor(model => detail.Origin): </dt>
+                    <dd>@Html.DisplayFor(model => detail.Origin)</dd>
+                </dl>
+            </div>
+        </div>
+    }
+</div>
+
+
+<p class="actions">
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.Animal.ID }, new { @class = "btn btn-primary btn-custom" }) 
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger btn-custom" })
+</p>
