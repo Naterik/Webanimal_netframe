@@ -1,22 +1,22 @@
 ﻿@model NetFramwork_WildNature.Db.AnimalDetail
 
 @{
-    ViewBag.Title = "CreateDetail";
+    ViewBag.Title = "EditDetail";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 <section class="content-header">
-    <h1>Thêm mới chi tiết động vật</h1>
+    <h1>Chỉnh sửa chi tiết động vật</h1>
     <ol class="breadcrumb">
         <li><a href="/Admin/Home"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="/Admin/Animals">Quản lý động vật</a></li>
-        <li class="active">Thêm mới chi tiết động vật</li>
+        <li class="active">Chỉnh sửa chi tiết động vật</li>
     </ol>
 </section>
 
 <section class="content">
     <div class="box box-primary">
-        @using (Html.BeginForm("CreateDetail", "Animals", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("EditDetail", "Animals", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
@@ -57,15 +57,32 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.Label("Images", "Chọn ảnh từ thư viện")
-                            <input type="file" id="Images" name="Images" accept="image/*" multiple />
+                        <label class="control-label col-md-2">Existing Images</label>
+                        <div class="col-md-10">
+                           @* @if (Model.Images != null)
+                            {
+                                foreach (var image in Model.Images)
+                                {
+                                    <div class="image-container" style="display: inline-block; position: relative; margin: 5px;">
+                                        <img src="@Url.Content(image.Link)" alt="Animal Image" style="width: 100px; height: 100px;" />
+                                        <button type="button" class="btn btn-danger delete-image" data-image-id="@image.ID" style="position: absolute; top: 0; right: 0;">X</button>
+                                    </div>
+                                }
+                            }*@
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="Images" class="control-label col-md-2">Add Images</label>
+                        <div class="col-md-10">
+                            <input type="file" name="Images" id="Images" multiple />
+                        </div>
+                    </div>
+
+
                     <div style="margin:50px 0px 0px 30px" class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Thêm mới" class="btn btn-default" />
-                            <button type="button" id="add-animal-detail" class="btn btn-primary">Thêm thuộc tính</button>
+                            <input type="submit" value="Lưu chỉnh sửa" class="btn btn-default" />
                             @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger btn-custom" })
                         </div>
                     </div>
@@ -74,21 +91,32 @@
         }
     </div>
 </section>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
-            var animalDetailHtml = $('.animal-detail-fields').first().clone();
-            $('#add-animal-detail').click(function () {
-                var newDetail = animalDetailHtml.clone();
-                newDetail.find('input, select').val('');
-                newDetail.append('<button class="btn btn-danger remove-animal-detail">Xóa</button>');
-                $('#animal-details-container').append(newDetail);
-            });
-            $(document).on('click', '.remove-animal-detail', function () {
-                $(this).closest('.animal-detail-fields').remove();
-            });
+
+<script type="text/javascript">
+   $(document).ready(function () {
+    $('.delete-image').click(function () {
+        var imageId = $(this).data('image-id');
+        var container = $(this).closest('.image-container');
+
+        $.ajax({
+            url: '@Url.Action("DeleteImage", "Animals")',
+            type: 'POST',
+            data: { id: imageId },
+            success: function (response) {
+                if (response.success) {
+                    container.remove();
+                } else {
+                    alert("Failed to delete image.");
+                }
+            },
+            error: function () {
+                alert("Error while deleting image.");
+            }
         });
-    </script>
+    });
+});
+</script>
 }
+

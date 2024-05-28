@@ -4,6 +4,7 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
+
 @section Style{
     <link href="~/Asset/Admin/bootstrap/css/Add.css" rel="stylesheet" />
     <link href="~/Asset/Admin/controller/Animal/Animaldetail.css" rel="stylesheet" />
@@ -47,10 +48,9 @@
     <h3 style="font-weight:bold">Ảnh</h3>
     <hr />
     <div class="image-select">
-        @foreach (var image in Model.AnimalDetail.Images)
+        @foreach (var image in Model.Images)
         {
             <img class="animal-image" src="@Url.Content(image.Link)" alt="Animal Image" />
-
         }
     </div>
 </div>
@@ -58,7 +58,7 @@
 <div class="animal-detail-list">
     <h4><i class="fas fa-list icon"></i>Chi tiết thông tin</h4>
     <hr />
-    @foreach (var detail in Model.Animal.AnimalDetails)
+    @foreach (var detail in Model.AnimalDetails)
     {
         <div class="row">
             <div class="col-md-2">
@@ -95,8 +95,7 @@
     }
 </div>
 
-
 <p class="actions">
-    @Html.ActionLink("Sửa", "Edit", new { id = Model.Animal.ID }, new { @class = "btn btn-primary btn-custom" }) 
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.Animal.ID }, new { @class = "btn btn-primary btn-custom" })
     @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger btn-custom" })
 </p>

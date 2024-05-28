@@ -19,12 +19,14 @@
         public int ID { get; set; }
 
         [StringLength(50)]
+        [DisplayName("Email")]
         public string Email { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Tên tình nguyện")]
+        [DisplayName("Tên người ủng hộ")]
         public string Name { get; set; }
-        [DisplayName("Tài khoản")]
+        [DisplayName("Động vật")]
+
         public int? AccountID { get; set; }
 
         public virtual Account Account { get; set; }

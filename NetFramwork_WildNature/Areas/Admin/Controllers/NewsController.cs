@@ -54,11 +54,25 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.News.Add(news);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    var image = Request.Files["Images"];
+                    if (image != null && image.ContentLength > 0)
+                    {
+                        string imageName = image.FileName;
+                        string folder = Server.MapPath("~/Asset/Admin/Image/" + imageName);
+                        image.SaveAs(folder);
+                        news.Images = "/Asset/Admin/Image/" + imageName;
+                    }
+                    db.News.Add(news);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception )
+                {
+                    // Xử lý ngoại lệ nếu cần
+                }
             }
-
             ViewBag.ẠnimalID = new SelectList(db.Animals, "ID", "Name", news.ẠnimalID);
             return View(news);
         }

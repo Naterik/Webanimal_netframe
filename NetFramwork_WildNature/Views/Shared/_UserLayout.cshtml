@@ -23,17 +23,35 @@
     <link href="~/Asset/User/lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
     <link href="~/Asset/User/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
     <!-- Bảng mã Bootstrap tùy chỉnh -->
+    <link href="~/Asset/User/css/homecss.css" rel="stylesheet" />
     <link href="~/Asset/User/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bảng mã Mẫu -->
     <link href="~/Asset/User/lib/animate/animate.css" rel="stylesheet" />
     <link href="~/Asset/User/css/style.css" rel="stylesheet" />
-    <link href="~/Asset/User/css/homecss.css" rel="stylesheet" />
+
     <style>
         .navbar .navbar-nav .nav-link:hover,
         .navbar .navbar-nav .nav-link.active {
             color: var(--primary);
         }
 
+        .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .navbar-nav .nav-item.dropdown .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 100px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 9999 !important; /* Tăng giá trị z-index */
+        }
+
+
+            .navbar-nav .nav-item.dropdown .dropdown-menu li a:hover {
+                background-color: #ddd;
+            }
     </style>
     @RenderSection("Style", required: false)
 </head>
@@ -51,13 +69,47 @@
             <div class="col-lg-7 px-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-4">
                     <small class="fa fa-map-marker-alt text-primary me-2"></small>
-                    <small>123 Đường, New York, Mỹ</small>
+                    <a href="">Huyện Tân Phú, tỉnh Đồng Nai, Việt Nam</a>
                 </div>
             </div>
             <div class="col-lg-5 px-5 text-end">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+                    <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+                        @if (Session["user"] != null)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link ahover" data-toggle="dropdown">
+                                    <i class="fa fa-user"></i>
+                                    @{
+                                        var user = (NetFramwork_WildNature.Db.Account)HttpContext.Current.Session["user"];
+                                        <span>@user.Name</span>
+                                    }
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a style="color: black" href="/Admin/Login/Logout"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                                    </li>
+                                    @if (user.RoleID == 1)
+                                    {
+                                        <li style="color: black">
+                                            <a style="color: black;" href="/Admin/Login/Index"><i class="fa fa-cog fa-fw"></i>Trang quản lý</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <!-- Liên kết Đăng Nhập -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Login/Login"><i class="fa fa-user"></i> Đăng nhập</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-3 me-4">
                     <small class="fa fa-phone-alt text-primary me-2"></small>
-                    <small>+012 345 6789</small>
+                    <small>03279627003</small>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
                     <a class="btn btn-sm-square bg-white text-primary me-1" href="">
@@ -94,7 +146,7 @@
                 <a href="/AnimalList/Index" class="nav-item nav-link">Động vật</a>
                 <a href="/Contact/Index" class="nav-item nav-link">Liên hệ</a>
             </div>
-            <a href="" class="btn btn-primary">Ủng hộ<i class="fa fa-arrow-right ms-3"></i></a>
+            <a href="/Donate/Index" class="btn btn-primary">Ủng hộ<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Thanh điều hướng chính kết thúc -->
@@ -107,13 +159,13 @@
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Địa chỉ</h5>
                     <p class="mb-2">
-                        <i class="fa fa-map-marker-alt me-3"></i>123 Đường, New York, Mỹ
+                        <i class="fa fa-map-marker-alt me-3"></i>Huyện Tân Phú, tỉnh Đồng Nai, Việt Nam
                     </p>
                     <p class="mb-2">
-                        <i class="fa fa-phone-alt me-3"></i>+012 345 67890
+                        <i class="fa fa-phone-alt me-3"></i>0379627003
                     </p>
                     <p class="mb-2">
-                        <i class="fa fa-envelope me-3"></i>info@example.com
+                        <i class="fa fa-envelope me-3"></i>lukhuong190703@gmail.com
                     </p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href="">
@@ -132,23 +184,23 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Liên kết nhanh</h5>
-                    <a class="btn btn-link" href="">Về chúng tôi</a>
-                    <a class="btn btn-link" href="">Liên hệ</a>
-                    <a class="btn btn-link" href="">Hoạt động của chúng tôi</a>
+                    <a class="btn btn-link" href="/Aboutus/Index">Về chúng tôi</a>
+                    <a class="btn btn-link" href="/Contact/Index">Liên hệ</a>
+                    <a class="btn btn-link" href="/News/Index">Hoạt động của chúng tôi</a>
                     <a class="btn btn-link" href="">Điều khoản & Điều kiện</a>
                     <a class="btn btn-link" href="">Hỗ trợ</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Liên kết phổ biến</h5>
-                    <a class="btn btn-link" href="">Về chúng tôi</a>
-                    <a class="btn btn-link" href="">Liên hệ</a>
-                    <a class="btn btn-link" href="">Hoạt động của chúng tôi</a>
+                    <a class="btn btn-link" href="/Aboutus/Index">Về chúng tôi</a>
+                    <a class="btn btn-link" href="/Contact/Index">Liên hệ</a>
+                    <a class="btn btn-link" href="/News/Index">Hoạt động của chúng tôi</a>
                     <a class="btn btn-link" href="">Điều khoản & Điều kiện</a>
                     <a class="btn btn-link" href="">Hỗ trợ</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Bản tin</h5>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <p></p>
                     <div class="position-relative mx-auto" style="max-width: 400px">
                         <input class="form-control border-0 w-100 py-3 ps-4 pe-5"
                                type="text"
@@ -175,11 +227,13 @@
     <script src="~/Asset/User/lib/easing/easing.min.js"></script>
     <script src="~/Asset/User/lib/waypoints/waypoints.min.js"></script>
     <script src="~/Asset/User/lib/counterup/counterup.min.js"></script>
+
     <script src="~/Asset/User/lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="~/Asset/User/lib/lightbox/js/lightbox.min.js"></script>
-    @*<script src="~/Asset/User/js/User.js"></script>*@
-    <!-- Mã JavaScript mẫu -->
     <script src="~/Asset/User/js/main.js"></script>
+    <script src="~/Asset/User/js/User.js"></script>
+    <!-- Mã JavaScript mẫu -->
+
     @RenderSection("Scripts", required: false)
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -203,5 +257,6 @@
         });
 
     </script>
+
 </body>
 </html>

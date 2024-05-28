@@ -10,6 +10,7 @@ using NetFramwork_WildNature.Db;
 
 namespace NetFramwork_WildNature.Areas.Admin.Controllers
 {
+    [RoleAuthorize("1", "2")]
     public class SpeciesController : Controller
     {
         
@@ -18,7 +19,7 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
         // GET: Admin/Species
         public ActionResult Index()
         {
-            return View(db.Species.ToList());
+                return View(db.Species.ToList());
         }
 
         // GET: Admin/Species/Details/5

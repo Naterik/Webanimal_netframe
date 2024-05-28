@@ -8,54 +8,64 @@ using System.ComponentModel.Design;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace NetFramwork_WildNature.Areas.Admin.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Admin/Login
         private WildNature db = new WildNature();
+
         public ActionResult Index()
+        {
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Login()
         {
             return View();
         }
-        public ActionResult Login(LoginModel model)
+
+        [HttpPost]
+        public ActionResult Login(string email, string pass)
         {
-            if (ModelState.IsValid)
+            var acc = db.Accounts.SingleOrDefault(m => m.Email.Trim().ToLower() == email.Trim().ToLower() && m.Password == pass);
+
+            if (acc != null)
             {
-                var dao = new UserDao();
-                var result = dao.Login(model.Name, Encryptor.MD5Hash(model.Password));
-                if (result == 1)
+                Session["user"] = acc;
+                FormsAuthentication.SetAuthCookie(acc.Email, false);
+
+                if (acc.RoleID == 1)
                 {
-                    var user = dao.GetById(model.Name);
-                    var userSession = new UserLogin();
-                    userSession.Name = user.Name;
-                    Session.Add(Contants.USER_SESSION, userSession);
-                    return RedirectToAction("Home","Admin");
+                    return RedirectToAction("Index");
                 }
-                else if (result == 0)
+                else if (acc.RoleID == 2)
                 {
-                    ModelState.AddModelError("", "Tài khoản không tồn tại.");
+                    return RedirectToAction("Index", "Home", new { area = "Admin" });
                 }
-                else if (result == -1)
+                else if (acc.RoleID == 3)
                 {
-                    ModelState.AddModelError("", "Tài khoản đang bị khoá.");
-                }
-                else if (result == -2)
-                {
-                    ModelState.AddModelError("", "Mật khẩu không đúng.");
-                }
-                else if (result == -3)
-                {
-                    ModelState.AddModelError("", "Tài khoản của bạn không có quyền đăng nhập.");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "đăng nhập không đúng.");
+                    return RedirectToAction("Index", "Home", new { area = "" });
                 }
             }
-            return View("Index","Login");
 
+            TempData["error"] = "Invalid account, please try again.";
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Remove("user");
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
         }
     }
 }

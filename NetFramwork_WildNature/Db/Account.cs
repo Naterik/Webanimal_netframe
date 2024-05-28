@@ -10,12 +10,6 @@
     [Table("Account")]
     public partial class Account
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Account()
-        {
-            Donates = new HashSet<Donate>();
-            Volunteers = new HashSet<Volunteer>();
-        }
 
         public int ID { get; set; }
 
@@ -27,23 +21,24 @@
         [DisplayName("Mã tài khoản")]
         public string Code { get; set; }
 
-        [DisplayName("Email")]
-        [Required(ErrorMessage = "Email không được để trống")]
+        [Required]
         [StringLength(50)]
+        [DisplayName("Email")]
         public string Email { get; set; }
 
-        [DisplayName("Mật khẩu ")]
-        [Required(ErrorMessage = "Mật khẩu không được để trống")]
-        [MinLength(4, ErrorMessage = "Mật khẩu không được ít hơn 4 ký tự")]
+        [Required]
         [StringLength(50)]
+        [DisplayName("Mật khẩu ")]
         public string Password { get; set; }
 
         [Column(TypeName = "date")]
-        [DisplayName("Ngày tạo tài khoản")]
+        [DisplayName("Ngày tạo ")]
         public DateTime? CreateDate { get; set; }
         [DisplayName("Quyền ")]
+
         public int? RoleID { get; set; }
         [DisplayName("Trạng thái ")]
+
         public bool? State { get; set; }
 
         public virtual Role Role { get; set; }

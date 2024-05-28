@@ -18,9 +18,9 @@
 
         public int ID { get; set; }
 
-        [DisplayName("Mã khu vực")]
-        [Required(ErrorMessage = "Mã khu vực không được để trống")]
+        [Required]
         [StringLength(50)]
+        [DisplayName("Mã khu vực")]
         public string Code { get; set; }
 
         [StringLength(50)]
@@ -30,6 +30,7 @@
         [StringLength(50)]
         [DisplayName("Địa điểm")]
         public string Location { get; set; }
+
         [DisplayName("Mô tả")]
         public string Decription { get; set; }
 

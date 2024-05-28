@@ -10,15 +10,17 @@ using NetFramwork_WildNature.Db;
 
 namespace NetFramwork_WildNature.Areas.Admin.Controllers
 {
+    [RoleAuthorize("1", "2")]
     public class DonatesController : Controller
     {
+
         private WildNature db = new WildNature();
 
         // GET: Admin/Donates
         public ActionResult Index()
         {
-            var donates = db.Donates.Include(d => d.Account);
-            return View(donates.ToList());
+                var donates = db.Donates.Include(d => d.Account);
+                return View(donates.ToList());
         }
 
         // GET: Admin/Donates/Details/5

@@ -10,6 +10,7 @@ using NetFramwork_WildNature.Db;
 
 namespace NetFramwork_WildNature.Areas.Admin.Controllers
 {
+    [RoleAuthorize("1", "2")]
     public class CategoryController : Controller
     {
         private WildNature db = new WildNature();
@@ -17,7 +18,7 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
         // GET: Admin/Category
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+                return View(db.Categories.ToList());
         }
 
         // GET: Admin/Category/Details/5

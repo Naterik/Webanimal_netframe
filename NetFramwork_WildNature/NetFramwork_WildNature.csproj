@@ -128,23 +128,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Admin\Controllers\AnimalDetailsController.cs" />
     <Compile Include="Areas\Admin\Controllers\AnimalsController.cs" />
     <Compile Include="Areas\Admin\Controllers\AreaController.cs" />
-    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ColorController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConservationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonatesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GmailController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\SpeciesController.cs" />
     <Compile Include="Areas\Admin\Controllers\VolunteersController.cs" />
-    <Compile Include="Areas\Admin\Models\AnimalListModel.cs" />
-    <Compile Include="Areas\Admin\Models\LoginModel.cs" />
-    <Compile Include="Areas\Admin\Models\WildNatureEntities.cs" />
+    <Compile Include="Areas\Admin\AddClass\AnimalListModel.cs" />
+    <Compile Include="Areas\Admin\AddClass\LoginModel.cs" />
+    <Compile Include="Areas\Admin\AddClass\RoleAuthorizeAttribute.cs" />
+    <Compile Include="Areas\Admin\AddClass\WildNatureEntities.cs" />
     <Compile Include="Common\Contants.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\UserLogin.cs" />
@@ -175,6 +175,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Gmail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -274,7 +275,6 @@
     <Content Include="Asset\Admin\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Asset\Admin\bootstrap\js\bootstrap.min.js" />
     <Content Include="Asset\Admin\bootstrap\js\fileinput.min.js" />
-    <Content Include="Asset\Admin\bootstrap\js\News.js" />
     <Content Include="Asset\Admin\controller\acccount.css" />
     <Content Include="Asset\Admin\controller\accountController.js" />
     <Content Include="Asset\Admin\controller\AnimalDetail.css" />
@@ -805,7 +805,6 @@
     <Content Include="Areas\Admin\Views\Account\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\401.cshtml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -953,12 +952,10 @@
     <Content Include="Areas\Admin\Views\Donates\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Donates\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Donates\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\AnimalDetails\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\AnimalDetails\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\AnimalDetails\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\AnimalDetails\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\AnimalDetails\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Animals\CreateDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Animals\EditDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -993,8 +990,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Admin\Views\Gmail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

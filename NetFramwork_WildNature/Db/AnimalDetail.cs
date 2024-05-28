@@ -10,12 +10,6 @@
     [Table("AnimalDetail")]
     public partial class AnimalDetail
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AnimalDetail()
-        {
-            Images = new HashSet<Image>();
-        }
-
         public int ID { get; set; }
 
         [StringLength(50)]
@@ -41,8 +35,5 @@
         public virtual Color Color { get; set; }
 
         public virtual Specie Specie { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Image> Images { get; set; }
     }
 }

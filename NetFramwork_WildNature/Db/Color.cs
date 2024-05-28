@@ -18,9 +18,9 @@
 
         public int ID { get; set; }
 
-        [DisplayName("Mã màu")]
-        [Required(ErrorMessage = "Mã màu không được để trống")]
+        [Required]
         [StringLength(50)]
+        [DisplayName("Mã màu")]
         public string Code { get; set; }
 
         [StringLength(50)]
@@ -28,8 +28,9 @@
         public string Name { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Màu lông đặc thù")]
+        [DisplayName("Màu lông cụ thể")]
         public string ColorSpecific { get; set; }
+
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnimalDetail> AnimalDetails { get; set; }

@@ -10,14 +10,16 @@ using NetFramwork_WildNature.Db;
 
 namespace NetFramwork_WildNature.Areas.Admin.Controllers
 {
+    [RoleAuthorize("1", "2")]
     public class AreaController : Controller
     {
         private WildNature db = new WildNature();
 
+
         // GET: Admin/Area
         public ActionResult Index()
         {
-            return View(db.Areas.ToList());
+              return View(db.Areas.ToList()); 
         }
 
         // GET: Admin/Area/Details/5

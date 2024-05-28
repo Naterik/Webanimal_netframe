@@ -11,7 +11,14 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
-            return View();
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Login", "Login", new { area = "Admin" });
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

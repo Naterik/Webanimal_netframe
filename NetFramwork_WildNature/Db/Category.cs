@@ -18,14 +18,13 @@
 
         public int ID { get; set; }
 
-        [DisplayName("Mã loại động vật")]
-        [Required(ErrorMessage = "Mã không được để trống")]
+        [Required]
         [StringLength(50)]
+        [DisplayName("Mã loại động vật")]
         public string Code { get; set; }
 
         [StringLength(50)]
         [DisplayName("Tên loại động vật")]
-        [Required(ErrorMessage = "Tên không được để trống")]
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

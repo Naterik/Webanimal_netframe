@@ -13,18 +13,16 @@
         public int ID { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Tên ảnh")]
         public string Name { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Loại ảnh")]
         public string FileType { get; set; }
 
         [StringLength(100)]
         public string Link { get; set; }
+        [DisplayName("Tên động vật")]
+        public int AnimalID { get; set; }
 
-        public int AnimalDetailID { get; set; }
-
-        public virtual AnimalDetail AnimalDetail { get; set; }
+        public virtual Animal Animal { get; set; }
     }
 }

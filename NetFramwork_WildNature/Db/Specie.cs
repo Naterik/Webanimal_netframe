@@ -18,9 +18,9 @@
 
         public int ID { get; set; }
 
-        [DisplayName("Mã loài")]
-        [Required(ErrorMessage = "Mã loài không được để trống")]
+        [Required]
         [StringLength(50)]
+        [DisplayName("Mã loài")]
         public string Code { get; set; }
 
         [StringLength(50)]
@@ -28,7 +28,7 @@
         public string Name { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Loài đặc thù")]
+        [DisplayName("Loài cụ thể")]
         public string NameSpecific { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

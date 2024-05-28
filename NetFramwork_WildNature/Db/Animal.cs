@@ -15,14 +15,15 @@
         {
             AnimalDetails = new HashSet<AnimalDetail>();
             FavoriteAnimals = new HashSet<FavoriteAnimal>();
+            Images = new HashSet<Image>();
             News = new HashSet<News>();
         }
 
         public int ID { get; set; }
 
-        [DisplayName("Mã động vật")]
-        [Required(ErrorMessage = "Mã động vật không được để trống")]
+        [Required]
         [StringLength(50)]
+        [DisplayName("Mã động vật")]
         public string Code { get; set; }
 
         [StringLength(50)]
@@ -34,7 +35,7 @@
         public int CategoryID { get; set; }
         [DisplayName("Trạng thái")]
         public bool? State { get; set; }
-        [DisplayName("Mô tả động vật")]
+
         public string Decription { get; set; }
         [DisplayName("Tình trạng bảo tồn")]
         public int? ConservationID { get; set; }
@@ -50,6 +51,9 @@
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavoriteAnimal> FavoriteAnimals { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Image> Images { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<News> News { get; set; }

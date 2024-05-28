@@ -12,15 +12,16 @@
     {
         public int ID { get; set; }
         [DisplayName("Số tiền")]
+
         public double? Amount { get; set; }
 
         [Column(TypeName = "date")]
         [DisplayName("Ngày chuyển")]
         public DateTime? Date { get; set; }
         [DisplayName("Tên tình nguyện ")]
-        public int AccountID { get; set; }
+
+        public int? VolunteerID { get; set; }
         [DisplayName("Trạng thái")]
-        public bool? State { get; set; }
 
         public virtual Account Account { get; set; }
     }

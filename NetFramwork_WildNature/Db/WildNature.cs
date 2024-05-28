@@ -49,14 +49,14 @@ namespace NetFramwork_WildNature.Db
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Animal>()
+                .HasMany(e => e.Images)
+                .WithRequired(e => e.Animal)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Animal>()
                 .HasMany(e => e.News)
                 .WithRequired(e => e.Animal)
                 .HasForeignKey(e => e.ẠnimalID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<AnimalDetail>()
-                .HasMany(e => e.Images)
-                .WithRequired(e => e.AnimalDetail)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Area>()

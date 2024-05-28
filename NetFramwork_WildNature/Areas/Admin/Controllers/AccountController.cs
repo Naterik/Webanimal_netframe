@@ -11,6 +11,8 @@ using NetFramwork_WildNature.Db;
 
 namespace NetFramwork_WildNature.Areas.Admin.Controllers
 {
+    [RoleAuthorize("1")]
+
     public class AccountController : Controller
     {
         private WildNature db = new WildNature();
@@ -18,8 +20,16 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
         // GET: Admin/Account
         public ActionResult Index()
         {
-            var accounts = db.Accounts.Include(a => a.Role);
-            return View(accounts.ToList());
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Login", "Login", new { area = "Admin" });
+            }
+            else
+            {
+                var accounts = db.Accounts.Include(a => a.Role);
+                return View(accounts.ToList());
+            }
+            
         }
 
         // GET: Admin/Account/Details/5

@@ -13,12 +13,7 @@ namespace NetFramwork_WildNature
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-/*            routes.MapRoute(
-                name: "Animal",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Aniamal", action = "Category", id = UrlParameter.Optional },
-                namespaces: new[] { "NetFramwork_WildNature.Controllers" }
-            );*/
+
 
             routes.MapRoute(
                 name: "Default",

@@ -1,5 +1,4 @@
-﻿@model NetFramwork_WildNature.Db.Animal
-
+﻿@model NetFramwork_WildNature.Areas.Admin.Models.AnimalListModel.AnimalViewModel
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -7,74 +6,115 @@
 
 <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Animal</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Area.Code)
+            @Html.DisplayNameFor(model => model.Animal.Area.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Area.Code)
+            @Html.DisplayFor(model => model.Animal.Area.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Category.Code)
+            @Html.DisplayNameFor(model => model.Animal.Category.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Category.Code)
+            @Html.DisplayFor(model => model.Animal.Category.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Conservation.Name)
+            @Html.DisplayNameFor(model => model.Animal.Conservation.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Conservation.Name)
+            @Html.DisplayFor(model => model.Animal.Conservation.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Code)
+            @Html.DisplayNameFor(model => model.Animal.Code)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Code)
+            @Html.DisplayFor(model => model.Animal.Code)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Animal.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Animal.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.State)
+            @Html.DisplayNameFor(model => model.Animal.State)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.State)
+            @Html.DisplayFor(model => model.Animal.State)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Decription)
+            @Html.DisplayNameFor(model => model.Animal.Decription)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Decription)
+            @Html.DisplayFor(model => model.Animal.Decription)
+
         </dd>
+        @foreach (var detail in Model.AnimalDetails)
+        {
+            <dt>
+                @Html.DisplayNameFor(_ => detail.Color.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(_ => detail.Color.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(_ => detail.Specie.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(_ => detail.Specie.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(_ => detail.Weight)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(_ => detail.Weight)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(_ => detail.Height)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(_ => detail.Height)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(_ => detail.Origin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(_ => detail.Origin)
+            </dd>
+        }
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

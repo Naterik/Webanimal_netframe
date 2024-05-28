@@ -3,6 +3,11 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
+    Random random = new Random();
+    int randomNumber = random.Next(1000, 9999); // generates a random number between 1000 and 9999
+    string animalCode = "DV" + randomNumber.ToString();
+    ViewBag.AnimalCode = animalCode;
 }
 
 <section class="content-header">
@@ -11,7 +16,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="/Admin/Home"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="/Admin/Animal">Quản lý động vật</a></li>
+        <li><a href="/Admin/Animals">Quản lý động vật</a></li>
         <li class="active">Thêm mới động vật</li>
     </ol>
 </section>
@@ -20,21 +25,20 @@
 <section class="content">
     <!-- SELECT2 EXAMPLE -->
     <div class="box box-primary">
-        <form method="post" action="/Admin/Animal/Create" enctype="multipart/form-data">
+        @using (Html.BeginForm("Create", "Animals", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
             <div class="box-header with-border">
             </div><!-- /.box-header -->
             <div class="box-body">
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
-
                 <div class="form-horizontal">
-
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                     <div class="form-group">
                         @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                            <input class="form-control" id="Code" name="Code" type="text" value="@ViewBag.AnimalCode" readonly />
                             @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -76,7 +80,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.Decription, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.Decription, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Decription, new { htmlAttributes = new { @class = "form-control" } ,@id = "Decription" })
                             @Html.ValidationMessageFor(model => model.Decription, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -89,19 +93,18 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        @Html.ActionLink("Tiếp tục", "CreateDetail", null, new { @class = "btn btn-primary btn-custom" })
-                        @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger btn-custom" })
+                    <div style="margin:50px 0px 0px 30px" class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Tiếp tục" class="btn btn-primary btn-custom" />
+                            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger btn-custom" })
+                        </div>
                     </div>
-
                 </div>
-                }
             </div>
-        </form>
+        }
     </div>
 </section><!-- /.content -->
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
