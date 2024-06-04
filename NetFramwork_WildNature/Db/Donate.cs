@@ -18,11 +18,11 @@
         [Column(TypeName = "date")]
         [DisplayName("Ngày chuyển")]
         public DateTime? Date { get; set; }
-        [DisplayName("Tên tình nguyện ")]
+        [DisplayName("Tên người dùng ")]
 
-        public int? VolunteerID { get; set; }
+        public int AccountID { get; set; }
         [DisplayName("Trạng thái")]
-
+        public bool? State { get; set; }
         public virtual Account Account { get; set; }
     }
 }

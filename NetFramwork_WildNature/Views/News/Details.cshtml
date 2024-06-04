@@ -1,0 +1,36 @@
+﻿@model NetFramwork_WildNature.Db.News
+
+@{
+    ViewBag.Title = "Chi tiết tin tức";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="display-4">@Model.Titile</h1>
+            <img src="@Url.Content(Model.Images)" alt="Ảnh bài viết" class="img-fluid mb-4">
+            <p class="lead">
+                @Html.Raw(Model.Decription)
+            </p>
+            <p><strong>Ngày đăng:</strong> @Model.Date.ToString()</p>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Danh mục</h3>
+                    <ul class="list-group">
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <li class="list-group-item">
+                                <a href="@Url.Action("AnimalsByCategory", "News", new { categoryId = category.ID })">
+                                    @category.Name
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

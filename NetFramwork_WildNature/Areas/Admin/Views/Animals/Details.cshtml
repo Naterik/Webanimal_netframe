@@ -37,8 +37,10 @@
                 <dt><i class="fas fa-info-circle icon"></i>@Html.DisplayNameFor(model => model.Animal.State) </dt>
                 <dd>@Html.DisplayFor(model => model.Animal.State)</dd>
 
-                <dt><i class="fas fa-align-left icon"></i>@Html.DisplayNameFor(model => model.Animal.Decription) </dt>
-                <dd>@Html.DisplayFor(model => model.Animal.Decription)</dd>
+                <dt><i class="fas fa-align-left icon"></i>@Html.DisplayNameFor(model => Model.Animal.Decription) </dt>
+                <dd>@Html.Raw(Model.Animal.Decription)</dd>
+
+
             </dl>
         </div>
     </div>

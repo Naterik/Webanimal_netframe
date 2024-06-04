@@ -10,8 +10,8 @@
 {
     <link rel="stylesheet" href="~/Asset/Admin/plugins/datatables/dataTables.bootstrap.css" />
     <link href="~/Asset/Admin/bootstrap/css/Add.css" rel="stylesheet" />
-
 }
+
 <div class="row">
     <div class="col-xs-12">
         <div class="box ">
@@ -22,24 +22,11 @@
                 <table id="example" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ID)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Animal.Name)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Titile)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Images)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Decription)
-                            </th>
-                            <th style="text-align:center">
-                                @Html.DisplayNameFor(model => model.Date)
-                            </th>
+                            <th>@Html.DisplayNameFor(model => model.First().Animal.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Titile)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Images)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Decription)</th>
+                            <th style="text-align:center">@Html.DisplayNameFor(model => model.First().Date)</th>
                             <th style="text-align:center">Thao tác</th>
                         </tr>
                     </thead>
@@ -47,26 +34,16 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ID)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Animal.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Titile)
-                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.Animal.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Titile)</td>
                                 <td>
                                     <img src="@Url.Content(item.Images)" alt="Image" style="max-width: 100px; max-height: 100px;" />
                                 </td>
-
-                                <td style="max-width:600px">
-                                    @Html.Raw(item.Decription)
+                                <td style="max-width: 700px; height: 100px">
+                                    @Html.Raw(item.Decription.Length > 1000 ? item.Decription.Substring(0, 1000) + "..." : item.Decription)
                                 </td>
-                                <td>
-                                    @Html.FormatValue(item.Date, "{0:dd/MM/yyyy}")
-                                </td>
-                                <td>
+                                <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                                <td style="text-align:center">
                                     @Html.ActionLink("Sửa", "Edit", new { id = item.ID }, new { @class = "btn btn-primary btn-custom" })
                                     <br />
                                     @Html.ActionLink("Chi tiết", "Details", new { id = item.ID }, new { @class = "btn btn-warning btn-custom" })
@@ -81,10 +58,10 @@
     </div><!-- /.col -->
 </div><!-- /.row -->
 
-
 @section Scripts
 {
     <script src="~/Asset/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="~/Asset/Admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <script src="~/Asset/Admin/plugins/datatables/dataTables.alphabetSearch.js"></script>
+
 }

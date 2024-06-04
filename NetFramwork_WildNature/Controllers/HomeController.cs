@@ -13,5 +13,6 @@ namespace NetFramwork_WildNature.Controllers
         {
             return View();
         }
+        
     }
 }

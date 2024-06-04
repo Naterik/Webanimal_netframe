@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "VNpayReturn";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>VNpayReturn</h2>
+
+@if (ViewBag.Message != null)
+{
+    <div>
+        <h3>@ViewBag.Message</h3>
+    </div>
+}
+else
+{
+    <div>
+        <h3>Đã có lỗi xảy ra trong quá trình thanh toán. Vui lòng thử lại.</h3>
+    </div>
+}

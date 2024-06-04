@@ -39,7 +39,7 @@ namespace NetFramwork_WildNature.Db
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Animal>()
-                .HasMany(e => e.AnimalDetails)
+                .HasMany(e => e.Animaldetails)
                 .WithRequired(e => e.Animal)
                 .WillCascadeOnDelete(false);
 

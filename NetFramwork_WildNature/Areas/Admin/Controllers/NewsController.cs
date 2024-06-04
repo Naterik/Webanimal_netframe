@@ -64,6 +64,8 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
                         image.SaveAs(folder);
                         news.Images = "/Asset/Admin/Image/" + imageName;
                     }
+                    news.Date = DateTime.Now;
+
                     db.News.Add(news);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -166,5 +168,6 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

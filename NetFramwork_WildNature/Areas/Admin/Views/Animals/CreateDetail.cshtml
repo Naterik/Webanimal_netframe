@@ -1,94 +1,95 @@
-﻿@model NetFramwork_WildNature.Db.AnimalDetail
+﻿@model List<NetFramwork_WildNature.Db.AnimalDetail>
 
 @{
-    ViewBag.Title = "CreateDetail";
+    ViewBag.Title = "Create Animal Details";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<section class="content-header">
-    <h1>Thêm mới chi tiết động vật</h1>
-    <ol class="breadcrumb">
-        <li><a href="/Admin/Home"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="/Admin/Animals">Quản lý động vật</a></li>
-        <li class="active">Thêm mới chi tiết động vật</li>
-    </ol>
-</section>
+<h2>Create Animal Details</h2>
 
-<section class="content">
-    <div class="box box-primary">
-        @using (Html.BeginForm("CreateDetail", "Animals", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("CreateDetail", "Animals", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div id="animal-details-container">
+        @for (int i = 0; i < Model.Count; i++)
         {
-            @Html.AntiForgeryToken()
-
-            <div class="box-header with-border">
-            </div>
-            <div class="box-body">
-                <div class="form-horizontal">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div id="animal-details-container">
-                        <div class="animal-detail-fields">
-                            <div class="form-group">
-                                <div class="col-md-4">
-                                    @Html.LabelFor(model => model.Weight, new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.LabelFor(model => model.Height, new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.LabelFor(model => model.Origin, new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.Origin, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Origin, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.LabelFor(model => model.ColorID, "Màu lông", new { @class = "control-label" })
-                                    @Html.DropDownList("ColorID", null, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.ColorID, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.LabelFor(model => model.SpecieID, "Giống loài", new { @class = "control-label" })
-                                    @Html.DropDownList("SpecieID", null, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.SpecieID, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.Label("Images", "Chọn ảnh từ thư viện")
-                            <input type="file" id="Images" name="Images" accept="image/*" multiple />
-                        </div>
-                    </div>
-                    <div style="margin:50px 0px 0px 30px" class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Thêm mới" class="btn btn-default" />
-                            <button type="button" id="add-animal-detail" class="btn btn-primary">Thêm thuộc tính</button>
-                            @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-danger btn-custom" })
-                        </div>
-                    </div>
+            <div class="animal-detail-fields">
+                <h4>Detail @(i + 1)</h4>
+                <div class="form-group">
+                    @Html.LabelFor(model => model[i].Weight)
+                    @Html.EditorFor(model => model[i].Weight, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model[i].Weight, "", new { @class = "text-danger" })
                 </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model[i].Height)
+                    @Html.EditorFor(model => model[i].Height, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model[i].Height, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model[i].Origin)
+                    @Html.EditorFor(model => model[i].Origin, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model[i].Origin, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model[i].ColorID, "Màu lông", new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model[i].ColorID, (SelectList)ViewBag.ColorID, "Select Color", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model[i].ColorID, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model[i].SpecieID, "Giống loài", new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model[i].SpecieID, (SelectList)ViewBag.SpecieID, "Select Species", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model[i].SpecieID, "", new { @class = "text-danger" })
+                </div>
+                <button type="button" class="btn btn-danger" onclick="removeAnimalDetail(this)">Remove</button>
             </div>
         }
     </div>
-</section>
+    <button type="button" class="btn btn-success" onclick="addAnimalDetail()">Add More Details</button>
+    <div class="form-group">
+        <label for="Images">Upload Images</label>
+        <input type="file" id="Images" name="Images" accept="image/*" multiple onchange="displaySelectedImages()" />
+    </div>
+    <div id="image-preview" class="row">
+        <!-- Image previews will be displayed here -->
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+}
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
-            var animalDetailHtml = $('.animal-detail-fields').first().clone();
-            $('#add-animal-detail').click(function () {
-                var newDetail = animalDetailHtml.clone();
-                newDetail.find('input, select').val('');
-                newDetail.append('<button class="btn btn-danger remove-animal-detail">Xóa</button>');
-                $('#animal-details-container').append(newDetail);
+    <script type="text/javascript">
+        function addAnimalDetail() {
+            var index = $('#animal-details-container .animal-detail-fields').length;
+            var template = $('#animal-details-container .animal-detail-fields').first().clone();
+            template.find('input, select').each(function () {
+                var name = $(this).attr('name').replace('[0]', '[' + index + ']');
+                $(this).attr('name', name);
+                $(this).attr('id', name);
+                $(this).val('');
             });
-            $(document).on('click', '.remove-animal-detail', function () {
-                $(this).closest('.animal-detail-fields').remove();
-            });
-        });
+            $('#animal-details-container').append(template);
+        }
+
+        function removeAnimalDetail(button) {
+            $(button).closest('.animal-detail-fields').remove();
+        }
+
+        function displaySelectedImages() {
+            var imagePreview = document.getElementById('image-preview');
+            imagePreview.innerHTML = ''; // Clear any existing images
+            var files = document.getElementById('Images').files;
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var imgElement = document.createElement('img');
+                    imgElement.src = e.target.result;
+                    imgElement.className = 'img-thumbnail';
+                    imgElement.style = 'max-height: 100px; margin: 5px;';
+                    imagePreview.appendChild(imgElement);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
     </script>
 }

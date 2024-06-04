@@ -6,6 +6,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
 
     [Table("Animal")]
     public partial class Animal
@@ -13,7 +14,7 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Animal()
         {
-            AnimalDetails = new HashSet<AnimalDetail>();
+            Animaldetails = new HashSet<AnimalDetail>();
             FavoriteAnimals = new HashSet<FavoriteAnimal>();
             Images = new HashSet<Image>();
             News = new HashSet<News>();
@@ -35,7 +36,7 @@
         public int CategoryID { get; set; }
         [DisplayName("Trạng thái")]
         public bool? State { get; set; }
-
+        [AllowHtml]
         public string Decription { get; set; }
         [DisplayName("Tình trạng bảo tồn")]
         public int? ConservationID { get; set; }
@@ -45,7 +46,7 @@
         public virtual Conservation Conservation { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AnimalDetail> AnimalDetails { get; set; }
+        public virtual ICollection<AnimalDetail> Animaldetails { get; set; }
 
         public virtual Area Area { get; set; }
 

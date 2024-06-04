@@ -69,8 +69,8 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.State)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Decription)
+                                <td style="max-width: 700px; height: 100px">
+                                    @Html.Raw(item.Decription.Length > 1000 ? item.Decription.Substring(0, 1000) + "..." : item.Decription)
                                 </td>
                                 <td>
                                     @Html.ActionLink("Sửa", "Edit", new { id = item.ID }, new { @class = "btn btn-primary btn-custom" })

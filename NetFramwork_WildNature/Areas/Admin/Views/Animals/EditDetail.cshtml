@@ -1,5 +1,4 @@
-﻿@model NetFramwork_WildNature.Db.AnimalDetail
-
+﻿@model NetFramwork_WildNature.Areas.Admin.Models.AnimalListModel.AnimalViewModel
 @{
     ViewBag.Title = "EditDetail";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -26,40 +25,43 @@
                 <div class="form-horizontal">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div id="animal-details-container">
-                        <div class="animal-detail-fields">
-                            <div class="form-group">
-                                <div class="col-md-4">
-                                    @Html.LabelFor(model => model.Weight, new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.LabelFor(model => model.Height, new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.LabelFor(model => model.Origin, new { @class = "control-label" })
-                                    @Html.EditorFor(model => model.Origin, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Origin, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.LabelFor(model => model.ColorID, "Màu lông", new { @class = "control-label" })
-                                    @Html.DropDownList("ColorID", null, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.ColorID, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.LabelFor(model => model.SpecieID, "Giống loài", new { @class = "control-label" })
-                                    @Html.DropDownList("SpecieID", null, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.SpecieID, "", new { @class = "text-danger" })
+                        @for (int i = 0; i < Model.AnimalDetails.Count; i++)
+                        {
+                            <div class="animal-detail">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.AnimalDetails[i].Weight, new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.AnimalDetails[i].Weight, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.AnimalDetails[i].Weight, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.AnimalDetails[i].Height, new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.AnimalDetails[i].Height, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.AnimalDetails[i].Height, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.AnimalDetails[i].Origin, new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.AnimalDetails[i].Origin, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.AnimalDetails[i].Origin, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.AnimalDetails[i].ColorID, "Màu lông", new { @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.AnimalDetails[i].ColorID, ViewBag.ColorID as SelectList, "Chọn màu sắc", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.AnimalDetails[i].ColorID, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.AnimalDetails[i].SpecieID, "Giống loài", new { @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.AnimalDetails[i].SpecieID, ViewBag.SpecieID as SelectList, "Chọn loài", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.AnimalDetails[i].SpecieID, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2">Existing Images</label>
-                        <div class="col-md-10">
-                           @* @if (Model.Images != null)
+                        <div class="col-md-10" id="current-images">
+                            @if (Model.Images != null)
                             {
                                 foreach (var image in Model.Images)
                                 {
@@ -68,7 +70,7 @@
                                         <button type="button" class="btn btn-danger delete-image" data-image-id="@image.ID" style="position: absolute; top: 0; right: 0;">X</button>
                                     </div>
                                 }
-                            }*@
+                            }
                         </div>
                     </div>
 
@@ -76,9 +78,9 @@
                         <label for="Images" class="control-label col-md-2">Add Images</label>
                         <div class="col-md-10">
                             <input type="file" name="Images" id="Images" multiple />
+                            <div id="images-preview"></div>
                         </div>
                     </div>
-
 
                     <div style="margin:50px 0px 0px 30px" class="form-group">
                         <div class="col-md-offset-2 col-md-10">
@@ -94,29 +96,39 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-<script type="text/javascript">
-   $(document).ready(function () {
-    $('.delete-image').click(function () {
-        var imageId = $(this).data('image-id');
-        var container = $(this).closest('.image-container');
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Handle image selection and display
+            $('#Images').on('change', function (e) {
+                var files = e.target.files;
+                var imagesPreviewDiv = $('#images-preview');
 
-        $.ajax({
-            url: '@Url.Action("DeleteImage", "Animals")',
-            type: 'POST',
-            data: { id: imageId },
-            success: function (response) {
-                if (response.success) {
-                    container.remove();
-                } else {
-                    alert("Failed to delete image.");
+                // Clear the preview div
+                imagesPreviewDiv.empty();
+
+                // Loop through each selected file
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    var reader = new FileReader();
+
+                    // When the image is loaded, add it to the preview div
+                    reader.onload = function (e) {
+                        var img = $('<img>').attr('src', e.target.result).css({ 'width': '100px', 'height': '100px' });
+                        var btn = $('<button>').text('X').addClass('btn btn-danger delete-image').css({ 'position': 'absolute', 'top': '0', 'right': '0' });
+                        var container = $('<div>').addClass('image-container').css({ 'display': 'inline-block', 'position': 'relative', 'margin': '5px' }).append(img, btn);
+                        imagesPreviewDiv.append(container);
+                    }
+
+                    // Read the image file
+                    reader.readAsDataURL(file);
                 }
-            },
-            error: function () {
-                alert("Error while deleting image.");
-            }
-        });
-    });
-});
-</script>
-}
+            });
 
+            // Handle image deletion
+            $(document).on('click', '.delete-image', function () {
+                $(this).closest('.image-container').remove();
+            });
+        });
+
+    </script>
+}

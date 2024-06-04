@@ -1,0 +1,55 @@
+﻿@model PagedList.IPagedList<NetFramwork_WildNature.Db.News>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Tin tức theo danh mục";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="display-4">Tin tức trong danh mục: @ViewBag.CategoryName</h1>
+            <div class="row">
+                @foreach (var newsItem in Model)
+                {
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <img class="card-img-top" src="@Url.Content(newsItem.Images)" alt="Ảnh bài viết">
+                            <div class="card-body">
+                                <h2 class="card-title">@newsItem.Titile</h2>
+                                <p class="card-text">
+                                    @Html.Raw(newsItem.Decription.Length > 100 ? newsItem.Decription.Substring(0, 100) + "..." : newsItem.Decription)
+                                </p>
+                                <a href="@Url.Action("Details", "News", new { id = newsItem.ID })" class="btn btn-primary">Đọc thêm &rarr;</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Ngày đăng: @newsItem.Date.ToString();
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="pagination-container">
+                @Html.PagedListPager(Model, page => Url.Action("AnimalsByCategory", new { categoryId = ViewBag.CategoryId, page }))
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Danh mục</h3>
+                    <ul class="list-group">
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <li class="list-group-item">
+                                <a href="@Url.Action("AnimalsByCategory", "News", new { categoryId = category.ID })">
+                                    @category.Name
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

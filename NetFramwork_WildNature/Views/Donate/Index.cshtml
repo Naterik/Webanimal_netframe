@@ -1,8 +1,35 @@
-﻿
+﻿@model NetFramwork_WildNature.Db.Donate
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Donate";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h2>Index</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Donate for Endangered Animals</h1>
+        <div class="image-section">
+            <img src="~/Asset/Admin/animal_img/6-Day-Serengeti-Game-Drives-Safari-1.jpg" alt="Endangered Animals">
+        </div>
+        <form class="donate-form" method="post" action="@Url.Action("Create", "Donate")">
+            <label for="name">Nhập tên của bạn</label>
+            <input type="text" id="name" name="Name" required>
 
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email" required>
+
+            <label for="amount">Số tiền ($)</label>
+            <input type="number" id="amount" name="Amount" required>
+
+            <input type="submit" value="Ủng hộ">
+        </form>
+    </div>
+</body>
+</html>

@@ -13,7 +13,7 @@ namespace NetFramwork_WildNature.Areas.Admin.Controllers
         {
             if (Session["user"] == null)
             {
-                return RedirectToAction("Login", "Login", new { area = "Admin" });
+                return RedirectToAction("Index");
             }
             else
             {

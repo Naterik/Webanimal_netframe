@@ -1,10 +1,10 @@
-﻿using NetFramwork_WildNature.Db;
+﻿using NetFramwork_WildNature.Areas.Admin.Models;
+using NetFramwork_WildNature.Db;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace NetFramwork_WildNature.Controllers
 {
@@ -15,42 +15,33 @@ namespace NetFramwork_WildNature.Controllers
         // Action Index
         public ActionResult Index(string searchString)
         {
-            var animals = db.Animals.Include(a => a.AnimalDetails.Select(ad => ad.Images))
-                                    .Include(a => a.Area);
+            var images = db.Images.Include(i => i.Animal)
+                                  .Include(i => i.Animal.Area)
+                                  .Include(i => i.Animal.Conservation);
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                animals = animals.Where(a => a.Name.Contains(searchString));
+                images = images.Where(i => i.Animal.Name.Contains(searchString));
             }
 
-            ViewBag.AnimalDetails = animals.ToList();
-            return View(animals.SelectMany(a => a.AnimalDetails.SelectMany(ad => ad.Images)).ToList());
+            return View(images.ToList());
         }
 
-
-        // Action để hiển thị chi tiết ảnh
-        public ActionResult AnimalDetail(int id)
+        public ActionResult Animal(int id)
         {
-            // Tìm ảnh theo ID và bao gồm các bảng liên quan
-            var image = db.Images.Include(i => i.AnimalDetail.Animal)
-                                 .Include(i => i.AnimalDetail.Specie)
-                                 .Include(i => i.AnimalDetail.Color)
-                                 .Include(i => i.AnimalDetail.Animal.Area)
-                                 .Include(i => i.AnimalDetail.Animal.Category)
-                                 .FirstOrDefault(i => i.ID == id);
+            // Use GetAnimalDetails() from AnimalListModel
+            var viewModel = new AnimalListModel().GetAnimalDetails(id);
 
-            if (image == null)
+            if (viewModel.Animal == null)
             {
                 return HttpNotFound();
             }
 
-            var animalDetail = image.AnimalDetail;
-            ViewBag.SelectedImage = image;
+            // Pass data to ViewBag
+            ViewBag.SelectedImage = viewModel.Images.FirstOrDefault();
+            ViewBag.RelatedNews = db.News.Where(n => n.Animal.ID == id).ToList();
 
-            return View(animalDetail);
+            return View(viewModel);
         }
-
-
-
     }
 }

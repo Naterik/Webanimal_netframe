@@ -76,7 +76,7 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.State)
                                 </td>
-                                <td>
+                                <td style="text-align:center">
                                     @Html.ActionLink("Sửa", "Edit", new { id = item.ID }, new { @class = "btn btn-primary btn-custom" })
                                     @Html.ActionLink("Chi tiết", "Details", new { id = item.ID }, new { @class = "btn btn-warning btn-custom" })
                                     @Html.ActionLink("Xóa", "Delete", new { id = item.ID }, new { @class = "btn btn-danger btn-custom" })

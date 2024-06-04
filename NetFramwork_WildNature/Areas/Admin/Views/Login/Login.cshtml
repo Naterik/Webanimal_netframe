@@ -1,69 +1,95 @@
 ﻿@model NetFramwork_WildNature.Db.Account
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login 09</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login WildNature</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="~/Asset/Admin/controller/Login/images/icons/favicon.ico" />
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Asset/Admin/controller/Login/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Asset/Admin/controller/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Asset/Admin/controller/Login/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/Asset/Admin/controller/Login/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Asset/Admin/controller/Login/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Asset/Admin/controller/Login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Asset/Admin/controller/Login/css/main.css">
 
-    <link rel="stylesheet" href="~/Asset/Admin/controller/Loginadmin/css/style.css">
-
+    <meta name="robots" content="noindex, follow">
 </head>
 <body>
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center">
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-4">
-                    <div class="login-wrap py-5">
-                        <h3 class="text-center mb-0">Welcome</h3>
-
-                        @using (Html.BeginForm())
-                        {
-                            @Html.ValidationSummary(false, "", new { @class = "text-danger" });
-                            <div class="form-group mb-3">
-                                <label class="label" for="name">Email</label>
-                                <div class="form-group has-feedback">
-                                    <input type="text" placeholder="Username" name="email" />
-                                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="label" for="password">Mật khẩu</label>
-                                <div class="form-group has-feedback">
-                                    <input type="password" placeholder="Password" name="pass" />
-                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                                </div>
-                                <div>
-                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <button type="submit" class="form-control btn btn-primary rounded submit px-3">Đăng nhập</button>
-                            </div>
-                            <p class="text-center">Muốn trở thành nhà tình nguyện? <a href="/Admin/Login/Signup">Đăng Ký</a></p>
-
-                        }
-
-
-                    </div>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="~/Asset/Admin/controller/Login/images/img-01.png" alt="IMG">
                 </div>
+                <form class="login100-form validate-form" method="post">
+                    @Html.AntiForgeryToken()
+                    <span class="login100-form-title">
+                        Login
+                    </span>
+                    @if (TempData["error"] != null)
+                    {
+                        <div class="alert alert-danger">
+                            @TempData["error"]
+                        </div>
+                    }
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="email" placeholder="Email">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="pass" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit">
+                            Đăng nhập
+                        </button>
+                    </div>
+                    <div class="text-center p-t-12">
+                        <a class="txt2" href="#">
+                            Quên mật Khẩu ?
+                        </a>
+                    </div>
+                    <div class="text-center p-t-136">
+                        <a class="txt2" href="/Admin/Login/Index">
+                            Đăng ký
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
 
-    <script src="@Url.Content("~/Asset/Admin/controller/Loginadmin/js/jquery.min.js")"></script>
-    <script src="@Url.Content("~/Asset/Admin/controller/Loginadmin/js/popper.js")"></script>
-    <script src="@Url.Content("~/Asset/Admin/controller/Loginadmin/js/bootstrap.min.js")"></script>
-    <script src="@Url.Content("~/Asset/Admin/controller/Loginadmin/js/main.js")"></script>
+    <script src="~/Asset/Admin/controller/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/Asset/Admin/controller/Login/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Asset/Admin/controller/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Asset/Admin/controller/Login/vendor/select2/select2.min.js"></script>
+    <script src="~/Asset/Admin/controller/Login/vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
 </body>
 </html>
-
-

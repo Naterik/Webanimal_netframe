@@ -2,9 +2,11 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
-    var animalDetails = ViewBag.AnimalDetails as IEnumerable<NetFramwork_WildNature.Db.Animal>;
 }
-
+<head>
+    <link href="~/Asset/User/css/AnimalDetail/AnimalDetail.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
 <!-- Page Header Start -->
 <div class="container-fluid header-bg py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
@@ -25,7 +27,6 @@
     </div>
 </div>
 <!-- Page Header End -->
-
 <!-- Bắt đầu Động vật -->
 <div class="container-xxl py-5">
     <div class="container">
@@ -51,15 +52,18 @@
             {
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                     <div class="animal-item position-relative">
-                        
+
                         <img class="img-fluid img_input" src="@Url.Content(image.Link)" alt="Animal Image" />
                         <div class="animal-text p-2">
-                            <a href="@Url.Action("AnimalDetail", "AnimalList", new { id = image.ID })">
+                            <a href="@Url.Action("Animal", "AnimalList", new { id = image.Animal.ID })">
                                 @{
-                                    var animal = animalDetails.FirstOrDefault(a => a.AnimalDetails.Any(ad => ad.Images.Contains(image)));
+                                    var animal = image.Animal;
+
                                     if (animal != null)
                                     {
                                         <h5 class="text-white mb-0">@animal.Name</h5>
+                                        <br />
+                                        <h5 class="text-white mb-0">@animal.Conservation.Name</h5>
                                         <br />
                                         <p class="text-white mb-0"><strong>Khu vực sinh sống:</strong><br /> @animal.Area.Name</p>
                                     }
@@ -73,6 +77,7 @@
         </div>
     </div>
 </div>
+
 <!-- Page Header End -->
 
 <link href="~/Asset/User/css/AnimalDetail/AnimalListcss.css" rel="stylesheet" />

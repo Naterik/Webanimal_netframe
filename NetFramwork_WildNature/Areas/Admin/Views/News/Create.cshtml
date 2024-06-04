@@ -42,7 +42,8 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                <input type="file" name="Images" class="form-control" />
+                                <input type="file" name="Images" class="form-control" onchange="loadFile(event)" />
+                                <img id="output" width="200" />
                                 @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -86,7 +87,15 @@
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
-
+<script>
+    var loadFile = function (e) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(e.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src)
+        }
+    };
+</script>
 }
 
 
