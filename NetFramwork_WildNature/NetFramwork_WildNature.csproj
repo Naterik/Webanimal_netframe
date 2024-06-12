@@ -481,6 +481,7 @@
     <Content Include="Asset\Admin\controller\accountController.js" />
     <Content Include="Asset\Admin\controller\AnimalDetail.css" />
     <Content Include="Asset\Admin\controller\Animal\Animaldetail.css" />
+    <Content Include="Asset\Admin\controller\Login\css\addLogin.css" />
     <Content Include="Asset\Admin\controller\Login\css\main.css" />
     <Content Include="Asset\Admin\controller\Login\css\util.css" />
     <Content Include="Asset\Admin\controller\Login\fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -1013,8 +1014,6 @@
     <Content Include="Areas\Admin\Views\Donates\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Animals\CreateDetail.cshtml" />
     <Content Include="Areas\Admin\Views\Animals\EditDetail.cshtml" />
-    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Asset\Admin\controller\Login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
     <Content Include="Asset\Admin\controller\Login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
     <Content Include="Asset\Admin\controller\Login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
@@ -1090,6 +1089,11 @@
     <Content Include="Asset\Admin\controller\Login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Asset\Admin\controller\Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Asset\Admin\controller\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\ForgetPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\VerifyCode.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\ResetPassword.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />

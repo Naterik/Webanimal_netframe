@@ -5,6 +5,7 @@
     .wrap-login100 {
         padding: 90px 130px 33px 100px !important;
     }
+
     .p-t-136 {
         padding-top: 50px !important;
     }
@@ -36,7 +37,7 @@
                 <form class="login100-form validate-form" method="post">
                     @Html.AntiForgeryToken()
                     <span class="login100-form-title">
-                        Register
+                        Đăng ký
                     </span>
                     @if (TempData["error"] != null)
                     {
@@ -45,7 +46,7 @@
                         </div>
                     }
                     <div class="wrap-input100 validate-input">
-                        @Html.TextBoxFor(m => m.Name, new { @class = "input100", placeholder = "Username" })
+                        @Html.TextBoxFor(m => m.Name, new { @class = "input100", placeholder = "Tên" })
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-user" aria-hidden="true"></i>
@@ -59,14 +60,14 @@
                         </span>
                     </div>
                     <div class="wrap-input100 validate-input">
-                        @Html.PasswordFor(m => m.Password, new { @class = "input100", placeholder = "Password" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "input100", placeholder = "Mật khẩu" })
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
                     <div class="wrap-input100 validate-input">
-                        <input class="input100" type="password" name="passConfirm" placeholder="Confirm Password" />
+                        <input class="input100" type="password" name="passConfirm" placeholder="Nhập lại mật khẩu" />
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -112,3 +113,4 @@
     </script>
 </body>
 </html>
+
